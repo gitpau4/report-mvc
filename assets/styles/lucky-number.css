@@ -1,0 +1,12 @@
+.lucky-number {
+    font-size: 3em;
+    margin: 5px;
+    padding: 5px;
+    border: 5px dotted var(--blue);
+    color: var(--warm);
+}
+
+.lucky-image {
+    width: 350px;
+    margin: 15px;
+}

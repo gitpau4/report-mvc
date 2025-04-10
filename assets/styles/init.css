@@ -1,0 +1,23 @@
+html {
+    line-height: 1.15;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    font-family: "Rethink Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Goudy Bookletter 1911", "Cormorant Garamond", serif;
+    font-weight: normal;
+}
+
+:root {
+    --darkblue: #0b2833;
+    --blue: #3d7c84;
+    --lightblue: #619497;
+    --warm: #dfad61;
+    --light: #decfb4;
+}

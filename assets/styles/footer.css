@@ -1,0 +1,10 @@
+.site-footer {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--darkblue);
+}
+
+.site-footer p a {
+    color: var(--light);
+}

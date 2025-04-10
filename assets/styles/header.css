@@ -1,0 +1,50 @@
+.site-header {
+    width: 100%;
+    height: 150px;
+    text-align: center;
+}
+
+.site-title {
+    font-size: 2em;
+    margin: 20px;
+    position: relative;
+    top: 20px;
+    color: var(--darkblue);
+    background-color: var(--light);
+}
+
+.site-nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    list-style-type: none;
+    margin: 15px;
+    padding: 0;
+}
+
+.site-nav ul li a {
+    text-decoration: none;
+    padding: 0 0.5em;
+    font-size: clamp(1em, 2.5vw, 1.4em);
+    color: var(--darkblue);
+}
+
+/* .navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    padding: 0 0.5em;
+    font-size: clamp(1em, 2.5vw, 1.4em);
+    color: var(--maroon);
+    text-transform: uppercase;
+    font-family: "Goudy Bookletter 1911", "Cormorant Garamond", serif;
+} */

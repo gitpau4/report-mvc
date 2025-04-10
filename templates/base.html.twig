@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
+        {% endblock %}
+        <style>
+            .site-header {
+                background-image: url("{{ asset('img/mosaic.jpg') }}")
+            }
+        </style>
+    </head>
+    <body>
+        <header class="site-header">
+            <span class="site-title">Min Symfony Sida</span>
+        </header>
+        <nav class="site-nav">
+            <ul>
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li><a href="{{ path('about') }}">About</a></li>
+                <li><a href="{{ path('report') }}">Report</a></li>
+                <li><a href="{{ path('lucky_number') }}">Lucky number</a></li>
+            </ul>
+        </nav>
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+        <footer class="site-footer">
+            <p><a href="https://github.com/gitpau4/report-mvc">Mitt GitHub-repo</a></p>
+        </footer>
+    </body>
+</html>

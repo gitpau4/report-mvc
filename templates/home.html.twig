@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>Om mig</h1>
+    <p>
+        Jag heter Paula och är 25 år gammal. Saker jag gillar är att baka, laga mat, gymma, umgås med vänner och kolla psykologisk thriller filmer.
+    </p>
+    <a href="{{ asset('img/me_bake.jpg') }}">
+        <img src="{{ asset('img/me_bake.jpg') }}" alt="Me baking" class="home-img">
+    </a>
+    <a href="{{ asset('img/me_berlin.jpg') }}">
+        <img src="{{ asset('img/me_berlin.jpg') }}" alt="Me in Berlin" class="home-img">
+    </a>
+{% endblock %}

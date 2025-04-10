@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Magic number{% endblock %}
+
+{% block body %}
+    <h1>Magiskt nummer</h1>
+    <p>Ditt magiska nummer är: </p>
+    <span class="lucky-number">{{ number }}</span><br>
+    <img src="{{ asset('img/lucky_num.jpg') }}" alt="guy recieving a random number" class="lucky-image">
+{% endblock %}

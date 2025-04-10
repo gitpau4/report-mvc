@@ -1,0 +1,19 @@
+body {
+    margin: 0 auto;
+    max-width: 900px;
+    background-color: var(--lightblue);
+}
+
+main {
+    padding: 10px 30px;
+    background-color: var(--light);
+}
+
+img {
+    max-width: 100%;
+}
+
+.home-img {
+    width: 350px;
+    margin: 10px;
+}
