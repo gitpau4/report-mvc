@@ -41,6 +41,26 @@ class CardGameController extends AbstractController
         return $this->redirectToRoute('session');
     }
 
+    #[Route('/card', name: 'card')]
+    public function card(): Response
+    {
+        // $data = [
+        //     "sessionData" => $session->all()
+        // ];
+
+        return $this->render('card/card.html.twig');
+    }
+
+    #[Route('/card/deck', name: 'deck')]
+    public function deck(): Response
+    {
+        $data = [
+            "sessionData" => $session->all()
+        ];
+
+        return $this->render('card/deck.html.twig', $data);
+    }
+
     // #[Route("/game/pig/init", name: "pig_init_get", methods: ['GET'])]
     // public function init(): Response
     // {
