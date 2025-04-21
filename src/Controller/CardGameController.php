@@ -44,18 +44,24 @@ class CardGameController extends AbstractController
     #[Route('/card', name: 'card')]
     public function card(): Response
     {
-        // $data = [
-        //     "sessionData" => $session->all()
-        // ];
-
         return $this->render('card/card.html.twig');
     }
 
     #[Route('/card/deck', name: 'deck')]
-    public function deck(): Response
+    public function deck(
+        SessionInterface $session
+    ): Response
     {
+        if ($session->has('deck')) {
+            $deck = $session->get('deck');
+        } else {
+            // skapa kortlek om inte finns i session
+            $deck = new DeckOfCards();
+            $session->set('deck', $deck);
+        }
+
         $data = [
-            "sessionData" => $session->all()
+            "cards" => $deck->getDeck()
         ];
 
         return $this->render('card/deck.html.twig', $data);

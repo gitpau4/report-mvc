@@ -2,7 +2,7 @@
 
 namespace App\Card;
 
-use App\Card\Card;
+use App\Card\CardGraphic;
 
 class DeckOfCards
 {
@@ -12,9 +12,9 @@ class DeckOfCards
 
     public function __construct()
     {
-        foreach ($values as $value) {
-            foreach ($suits as $suit) {
-                $this->deck[] = new Card($value, $suit);
+        foreach ($this->suits as $suit) {
+            foreach ($this->values as $value) {
+                $this->deck[] = new CardGraphic($value, $suit);
             }
         }
     }
@@ -31,14 +31,14 @@ class DeckOfCards
 
     public function reset(): void
     {
-        foreach ($values as $value) {
-            foreach ($suits as $suit) {
-                $this->deck[] = new Card($value, $suit);
+        foreach ($this->suits as $suit) {
+            foreach ($this->values as $value) {
+                $this->deck[] = new CardGraphic($value, $suit);
             }
         }
     }
 
-    public function drawCard(): Card
+    public function drawCard(): CardGraphic
     {
         return array_pop($this->deck);
     }

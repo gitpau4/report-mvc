@@ -18,7 +18,7 @@ class CardGraphic extends Card
 
     public function getAsString(): string
     {
-        $symbol = $this->symbols[$this->suit];
-        return "[{$this->value} {$symbol}]";
+        $symbol = $this->symbols[$this->suit] ?? '?';
+        return "{$this->value} {$symbol}";
     }
 }

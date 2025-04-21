@@ -3,4 +3,13 @@
 {% block title %}Deck{% endblock %}
 
 {% block body %}
+<h1>Samtliga kort</h1>
+
+<div class="card-container">
+    {% for card in cards %}
+    <div class="single-card {{ card.getSuit() }}">
+        {{ card.getAsString() }}
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

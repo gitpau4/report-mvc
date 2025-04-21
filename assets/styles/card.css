@@ -1,0 +1,21 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.single-card {
+    padding: 0.5em 0.8em;
+    margin: 0.3em;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 1.5em;
+    min-height: 9em;
+    background-color: white;
+}
+
+.hearts,
+.diamonds {
+    color: #d30000;
+}

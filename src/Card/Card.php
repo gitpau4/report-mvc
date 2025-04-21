@@ -10,7 +10,7 @@ class Card
     public function __construct(string $value, string $suit)
     {
         $this->value = $value;
-        $this->value = $suit;
+        $this->suit = $suit;
     }
 
     public function getValue(): string
