@@ -7,7 +7,12 @@
     <p>JSON routes som finns på denna sida:</p>
     <ul>
         <li>
-            /api/quote
+            <a href="{{ path('json_quote') }}">/api/quote</a>
+            <p>Genererar dagens citat.</p>
+        </li>
+        <li>
+            <a href="{{ path('api_deck') }}">/api/deck</a>
+            <p>Visar hel sorterad kortlek.</p>
         </li>
     </ul>
 {% endblock %}
