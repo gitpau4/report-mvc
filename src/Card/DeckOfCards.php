@@ -7,6 +7,7 @@ use App\Card\CardGraphic;
 class DeckOfCards
 {
     private $deck = [];
+    private $originalDeck = [];
     private $values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
     private $suits = ['spades', 'hearts', 'clubs', 'diamonds'];
 
@@ -17,11 +18,18 @@ class DeckOfCards
                 $this->deck[] = new CardGraphic($value, $suit);
             }
         }
+
+        $this->originalDeck = $this->deck;
     }
 
     public function getDeck(): array
     {
         return $this->deck;
+    }
+
+    public function getOriginalDeck(): array
+    {
+        return $this->originalDeck;
     }
 
     public function shuffle(): void
@@ -31,14 +39,10 @@ class DeckOfCards
 
     public function reset(): void
     {
-        foreach ($this->suits as $suit) {
-            foreach ($this->values as $value) {
-                $this->deck[] = new CardGraphic($value, $suit);
-            }
-        }
+        $this->deck = $this->originalDeck;
     }
 
-    public function drawCard(): CardGraphic
+    public function drawCard(): ?CardGraphic
     {
         return array_pop($this->deck);
     }
@@ -46,13 +50,16 @@ class DeckOfCards
     public function drawNumberCards(int $number): array
     {
         $drawedCards = [];
-        for ($i=0; $i < $number; $i++) { 
-            $drawedCards[] = array_pop($this->deck);
+        if ($number <= $this->getNumberOfCards()) {
+            for ($i=0; $i < $number; $i++) { 
+                $drawedCards[] = array_pop($this->deck);
+            }
         }
+        
         return $drawedCards;
     }
 
-    public function getNumberCards(): int
+    public function getNumberOfCards(): int
     {
         return count($this->deck);
     }

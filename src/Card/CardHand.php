@@ -18,7 +18,7 @@ class CardHand
         return $this->hand;
     }
 
-    public function getNumberCards(): int
+    public function getNumberOfCards(): int
     {
         return count($this->hand);
     }

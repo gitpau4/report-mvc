@@ -5,6 +5,10 @@
 {% block body %}
 <h1>{{ title }}</h1>
 
+{{ include('flash.html.twig') }}
+
+<p>Antal kort kvar i leken: {{ cards_num }}</p>
+
 <div class="card-container">
     {% for card in cards %}
     <div class="single-card {{ card.getSuit() }}">
