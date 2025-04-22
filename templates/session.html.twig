@@ -5,13 +5,7 @@
 {% block body %}
 <h1>Session data</h1>
 
-{% if sessionData|length > 0 %}
-    {% for key, value in sessionData %}
-        <p>{{ key }}: {{ value }}</p>
-    {% endfor %}
-{% else %}
-    <p>Sessionen är tom</p>
-{% endif %}
+{{ dump(sessionData) }}
 
 {{ include('flash.html.twig') }}
 
