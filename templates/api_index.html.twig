@@ -14,5 +14,23 @@
             <a href="{{ path('api_deck') }}">/api/deck</a>
             <p>Visar hel sorterad kortlek.</p>
         </li>
+        <li>
+            <form method="post" action="/api/deck/shuffle">
+                <input type="submit" name="shuffle" value="Blanda kortleken">
+            </form>
+            <p>Återställer och blandar kortleken som visas.</p>
+        </li>
+        <li>
+            <form method="post" action="/api/deck/draw">
+                <input type="submit" name="draw" value="Dra ett kort">
+            </form>
+            <p>Drar ett kort ur kortleken och visar det, visar hur många kort som finns kvar i kortleken.</p>
+        </li>
+        <li>
+            <form method="post" action="/api/deck/draw/5">
+                <input type="submit" name="drawNum" value="Dra fem kort">
+            </form>
+            <p>Drar fem kort ur kortleken och visar de, visar hur många kort som finns kvar i kortleken.</p>
+        </li>
     </ul>
 {% endblock %}
