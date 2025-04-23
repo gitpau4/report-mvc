@@ -18,7 +18,10 @@
         <li><strong>Card:</strong> Representerar ett spelkort med värde och färg.</li>
         <li><strong>CardGraphic:</strong> Visuellt representerar ett spelkort. Subklass som ärver från Card.</li>
         <li><strong>CardHand:</strong> Representerar en hand med kort med bland annat metod för att lägga till kort. Innehåller Card objekt, komposition.</li>
-        <li><strong>DeckOfCards:</strong> Representerar hela kortleken med bland annat metoder för att blanda och dra kort. Innehåller Card objekt, kompositiopn.</li>
+        <li><strong>DeckOfCards:</strong> Representerar hela kortleken med bland annat metoder för att blanda och dra kort. Innehåller CardGraphic objekt, kompositiopn.</li>
     </ul>
 </p>
+<a href="{{ asset('img/card_uml.png') }}">
+    <img src="{{ asset('img/card_uml.png') }}" alt="">
+</a>
 {% endblock %}
