@@ -15,8 +15,7 @@ class CardGameControllerJson
 {
     private function getSessionDeck(
         SessionInterface $session
-    ): DeckOfCards
-    {
+    ): DeckOfCards {
         if ($session->has('deck')) {
             $deck = $session->get('deck');
         } else {
@@ -31,8 +30,7 @@ class CardGameControllerJson
     #[Route("/api/deck", name: "api_deck", methods: ['GET'])]
     public function apiDeck(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $this->getSessionDeck($session);
 
         $cards = $deck->getOriginalDeck();
@@ -55,8 +53,7 @@ class CardGameControllerJson
     #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ['POST'])]
     public function apiDeckShuffle(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $this->getSessionDeck($session);
 
         // återställ kortlek
@@ -87,8 +84,7 @@ class CardGameControllerJson
     #[Route("/api/deck/draw", name: "api_deck_draw", methods: ['POST'])]
     public function apiDeckDraw(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $this->getSessionDeck($session);
 
         // dra ett kort
@@ -118,8 +114,7 @@ class CardGameControllerJson
     public function apiDeckDrawNum(
         SessionInterface $session,
         int $num
-    ): Response
-    {
+    ): Response {
         $deck = $this->getSessionDeck($session);
 
         $cards = $deck->drawNumberCards($num);

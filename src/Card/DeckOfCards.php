@@ -51,11 +51,11 @@ class DeckOfCards
     {
         $drawedCards = [];
         if ($number <= $this->getNumberOfCards()) {
-            for ($i=0; $i < $number; $i++) { 
+            for ($i = 0; $i < $number; $i++) {
                 $drawedCards[] = array_pop($this->deck);
             }
         }
-        
+
         return $drawedCards;
     }
 

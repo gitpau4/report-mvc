@@ -17,8 +17,7 @@ class CardGameController extends AbstractController
     #[Route('/session', name: 'session')]
     public function session(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $data = [
             "sessionData" => $session->all()
         ];
@@ -29,8 +28,7 @@ class CardGameController extends AbstractController
     #[Route('/session/delete', name: 'session_delete')]
     public function sessionDelete(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $session->clear();
 
         $this->addFlash(
@@ -49,8 +47,7 @@ class CardGameController extends AbstractController
 
     private function getSessionDeck(
         SessionInterface $session
-    ): DeckOfCards
-    {
+    ): DeckOfCards {
         if ($session->has('deck')) {
             $deck = $session->get('deck');
         } else {
@@ -65,8 +62,7 @@ class CardGameController extends AbstractController
     #[Route('/card/deck', name: 'deck')]
     public function deck(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $this->getSessionDeck($session);
 
         $data = [
@@ -80,8 +76,7 @@ class CardGameController extends AbstractController
     #[Route('/card/deck/shuffle', name: 'deck_shuffle')]
     public function deckShuffle(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $this->getSessionDeck($session);
 
         // återställ kortlek
@@ -103,8 +98,7 @@ class CardGameController extends AbstractController
     #[Route('/card/deck/draw', name: 'deck_draw')]
     public function deckDraw(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $this->getSessionDeck($session);
 
         // dra ett kort
@@ -137,8 +131,7 @@ class CardGameController extends AbstractController
     public function deckDrawNumb(
         SessionInterface $session,
         int $num
-    ): Response
-    {
+    ): Response {
         $deck = $this->getSessionDeck($session);
 
         // dra num kort
