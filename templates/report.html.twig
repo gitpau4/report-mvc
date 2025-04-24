@@ -37,7 +37,38 @@
         <section id="kmom02">
             <h2>Kmom02</h2>
             <p>
-                text
+                Arv används i php när en klass ärver attribut och metoder från en annan klass. 
+                Den ärvande klassen kallas subklass och basklassen kallas superklass. 
+                Man kan säga att subklassen utökar superklassen. 
+                Komposition innebär att en klass refererar till en annan i sina attribut. 
+                Man brukar kalla det för en <i>has-a</i> relation, alltså att <i>klass 1 har en klass2</i>. 
+                Interface innebär att man specifierar vilka metoder en klass <b>ska</b> att implementera. 
+                Trait liknar arv, alltså den innehåller attribut och metoder som andra klasser använder. 
+                Skillnaden från arv är att klassen kan använda flera olika traits.
+            </p>
+            <p>
+                Jag började med att skapa klasserna med metoder som jag tänkte skulle behövas. 
+                Under arbetets gång fick jag justera klasserna så att de kunde lösa all funktionalitet som behövdes för uppgiften. 
+                Jag skapade två olika controller klasser, en för twig och en för json. 
+                Vissa twig templates använde jag till flera routes, tex deck och shuffle använder samma twig template, vilket gör koden lite mer dry. 
+                Ett förbättringspotential jag ser är att jag just nu har en metod för att hämta data från sessionen som är likadan i båda controllers, 
+                där skulle jag kanske kunna skapa en klass med metoden som de båda kan hämta metoden från. 
+                Jag skulle även kunna göra knappen på api landningssidan för att dra flera kort mer flexibel, just nu är knappen hårdkodad på 5 st kort.
+            </p>
+            <p>
+                Mina reflektioner över att jobba i Symfony är att det är ganska likt hur vi jobbade i oopython kursen. 
+                I alla fall yahtzee i oopython och nu med kortleken, strukturen på filerna med templates och routes är ganska lik. 
+                Det är en struktur jag börjat gilla, för det ger en uppdelning mellan logiken och presentationen.
+            </p>
+            <p>
+                Mitt TIL för detta kmom är att man kan spara hela objekt i sessionen i php.
+            </p>
+            <p>
+                Referenser:
+                <ul>
+                    <li><a href="https://www.w3schools.com/php/php_oop_what_is.asp">w3schools PHP - What is OOP?</a></li>
+                    <li><a href="https://dbwebb.se/guide/kom-igang-med-objektorienterad-programmering-i-php">dbwebb Kom igång med Objektorienterad programmering i PHP</a></li>
+                </ul>
             </p>
             </section>
     </article>
