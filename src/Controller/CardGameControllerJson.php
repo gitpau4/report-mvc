@@ -18,12 +18,14 @@ class CardGameControllerJson
     ): DeckOfCards {
         if ($session->has('deck')) {
             $deck = $session->get('deck');
-        } else {
-            // skapa kortlek om inte finns i session
-            $deck = new DeckOfCards();
-            $session->set('deck', $deck);
+            if ($deck instanceof DeckOfCards) {
+                return $deck;
+            }
         }
 
+        // skapa kortlek om inte finns i session
+        $deck = new DeckOfCards();
+        $session->set('deck', $deck);
         return $deck;
     }
 
@@ -89,7 +91,9 @@ class CardGameControllerJson
 
         // dra ett kort
         $drawnCard = $deck->drawCard();
+        $data = [];
 
+        // phpmd säger att undvika else satser, men i detta fall tycker jag det blir tydligare och snyggare med else satsen.
         if ($drawnCard === null) {
             $data['warning'] = ['Det finns inga kort kvar i leken!'];
         } else {
