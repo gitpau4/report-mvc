@@ -6,6 +6,7 @@ use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
+use App\Helper\CardGameHelper;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +15,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardGameController extends AbstractController
 {
+    private CardGameHelper $cardGameHelper;
+
+    public function __construct(CardGameHelper $cardGameHelper)
+    {
+        $this->cardGameHelper = $cardGameHelper;
+    }
+
     #[Route('/session', name: 'session')]
     public function session(
         SessionInterface $session
@@ -45,27 +53,11 @@ class CardGameController extends AbstractController
         return $this->render('card/card.html.twig');
     }
 
-    private function getSessionDeck(
-        SessionInterface $session
-    ): DeckOfCards {
-        if ($session->has('deck')) {
-            $deck = $session->get('deck');
-            if ($deck instanceof DeckOfCards) {
-                return $deck;
-            }
-        }
-
-        // skapa kortlek om inte finns i session
-        $deck = new DeckOfCards();
-        $session->set('deck', $deck);
-        return $deck;
-    }
-
     #[Route('/card/deck', name: 'deck')]
     public function deck(
         SessionInterface $session
     ): Response {
-        $deck = $this->getSessionDeck($session);
+        $deck = $this->cardGameHelper->getSessionDeck($session);
 
         $data = [
             "cards" => $deck->getOriginalDeck(),
@@ -79,7 +71,7 @@ class CardGameController extends AbstractController
     public function deckShuffle(
         SessionInterface $session
     ): Response {
-        $deck = $this->getSessionDeck($session);
+        $deck = $this->cardGameHelper->getSessionDeck($session);
 
         // återställ kortlek
         $deck->reset();
@@ -101,7 +93,7 @@ class CardGameController extends AbstractController
     public function deckDraw(
         SessionInterface $session
     ): Response {
-        $deck = $this->getSessionDeck($session);
+        $deck = $this->cardGameHelper->getSessionDeck($session);
 
         // dra ett kort
         $cards = [];
@@ -134,7 +126,7 @@ class CardGameController extends AbstractController
         SessionInterface $session,
         int $num
     ): Response {
-        $deck = $this->getSessionDeck($session);
+        $deck = $this->cardGameHelper->getSessionDeck($session);
 
         // dra num kort
         $cards = $deck->drawNumberCards($num);
