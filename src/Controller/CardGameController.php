@@ -15,11 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardGameController extends AbstractController
 {
-    private CardGameHelper $cardGameHelper;
+    private CardGameHelper $helper;
 
-    public function __construct(CardGameHelper $cardGameHelper)
+    public function __construct(CardGameHelper $helper)
     {
-        $this->cardGameHelper = $cardGameHelper;
+        $this->helper = $helper;
     }
 
     #[Route('/session', name: 'session')]
@@ -57,7 +57,7 @@ class CardGameController extends AbstractController
     public function deck(
         SessionInterface $session
     ): Response {
-        $deck = $this->cardGameHelper->getSessionDeck($session);
+        $deck = $this->helper->getSessionDeck($session);
 
         $data = [
             "cards" => $deck->getOriginalDeck(),
@@ -71,7 +71,7 @@ class CardGameController extends AbstractController
     public function deckShuffle(
         SessionInterface $session
     ): Response {
-        $deck = $this->cardGameHelper->getSessionDeck($session);
+        $deck = $this->helper->getSessionDeck($session);
 
         // återställ kortlek
         $deck->reset();
@@ -93,7 +93,7 @@ class CardGameController extends AbstractController
     public function deckDraw(
         SessionInterface $session
     ): Response {
-        $deck = $this->cardGameHelper->getSessionDeck($session);
+        $deck = $this->helper->getSessionDeck($session);
 
         // dra ett kort
         $cards = [];
@@ -126,7 +126,7 @@ class CardGameController extends AbstractController
         SessionInterface $session,
         int $num
     ): Response {
-        $deck = $this->cardGameHelper->getSessionDeck($session);
+        $deck = $this->helper->getSessionDeck($session);
 
         // dra num kort
         $cards = $deck->drawNumberCards($num);
@@ -148,5 +148,18 @@ class CardGameController extends AbstractController
         ];
 
         return $this->render('card/draw.html.twig', $data);
+    }
+
+    // game 21
+    #[Route('/game', name: 'game')]
+    public function game(): Response
+    {
+        return $this->render('game21/game.html.twig');
+    }
+
+    #[Route('/game/doc', name: 'game_doc')]
+    public function gameDoc(): Response
+    {
+        return $this->render('game21/doc.html.twig');
     }
 }

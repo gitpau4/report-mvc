@@ -6,3 +6,7 @@ parameters:
         - ../../tests
     bootstrapFiles:
         #- .phpstan.constants.php
+    excludePaths:
+        - ../../tests/bootstrap.php
+        - ../../src/Dice
+        - ../../src/Controller/DiceGameController.php

@@ -1,0 +1,36 @@
+landingssida game/
+    spelregler
+    länk till dokumnetation game/doc
+        flödesschema
+        pseudo
+        klass beskrivningar
+    start knapp
+    lägg till i nav bar
+
+spelplan
+    knapp 'ta kort'
+        kortet visas
+    knapp 'ta kort' eller 'stanna'
+
+api/game visar ställning i spelet
+
+om man får över 21 vinner banken
+ess är 1 eller 14
+vid lika vinner banken
+får banken över 21 vinner spelaren
+
+banken plockar tills den får 17 eller mer, sedan stannar
+
+klasser:
+CardGraphic - ett kort 
+CardHand - en hand med kort 
+DeckOfCards - hela kortleken
+Player - en spelare eller bank, innehåller hand 
+GameLogic - spelstatus
+
+pseudokod:
+//start game
+create deck 
+create player 
+create bank 
+

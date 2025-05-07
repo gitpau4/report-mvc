@@ -6,34 +6,27 @@ use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
+use App\Helper\CardGameHelper;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CardGameControllerJson
+class CardGameControllerJson extends AbstractController
 {
-    private function getSessionDeck(
-        SessionInterface $session
-    ): DeckOfCards {
-        if ($session->has('deck')) {
-            $deck = $session->get('deck');
-            if ($deck instanceof DeckOfCards) {
-                return $deck;
-            }
-        }
+    private CardGameHelper $helper;
 
-        // skapa kortlek om inte finns i session
-        $deck = new DeckOfCards();
-        $session->set('deck', $deck);
-        return $deck;
+    public function __construct(CardGameHelper $helper)
+    {
+        $this->helper = $helper;
     }
 
     #[Route("/api/deck", name: "api_deck", methods: ['GET'])]
     public function apiDeck(
         SessionInterface $session
     ): Response {
-        $deck = $this->getSessionDeck($session);
+        $deck = $this->helper->getSessionDeck($session);
 
         $cards = $deck->getOriginalDeck();
         $data = [];
@@ -56,7 +49,7 @@ class CardGameControllerJson
     public function apiDeckShuffle(
         SessionInterface $session
     ): Response {
-        $deck = $this->getSessionDeck($session);
+        $deck = $this->helper->getSessionDeck($session);
 
         // återställ kortlek
         $deck->reset();
@@ -87,13 +80,13 @@ class CardGameControllerJson
     public function apiDeckDraw(
         SessionInterface $session
     ): Response {
-        $deck = $this->getSessionDeck($session);
+        $deck = $this->helper->getSessionDeck($session);
 
         // dra ett kort
         $drawnCard = $deck->drawCard();
         $data = [];
 
-        // phpmd säger att undvika else satser, men i detta fall tycker jag det blir tydligare och snyggare med else satsen.
+        // phpmd säger att undvika else satser, men i detta fall tycker jag det blir bättre med else satsen.
         if ($drawnCard === null) {
             $data['warning'] = ['Det finns inga kort kvar i leken!'];
         } else {
@@ -119,7 +112,7 @@ class CardGameControllerJson
         SessionInterface $session,
         int $num
     ): Response {
-        $deck = $this->getSessionDeck($session);
+        $deck = $this->helper->getSessionDeck($session);
 
         $cards = $deck->drawNumberCards($num);
 
