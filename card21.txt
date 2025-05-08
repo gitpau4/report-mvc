@@ -58,7 +58,7 @@ draw post
 stop post 
     byter till banken
     flash om vem som vann
-    redirect till play?
+    redirect till play
 
 draw metod i klassen GameLogic:
 card = draw one from DeckOfCards
@@ -100,7 +100,7 @@ else
     winner = player
 
 GameLogic:
-attrubyt:
+attribut:
 deck 
 players (player och bank)
 turn 

@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game ongoing{% endblock %}
+
+{% block body %}
+<h1>Kortspel 21 SPELAR</h1>
+
+<h2>Dina poäng: {{ playerPoints }}</h2>
+
+{% for card in playerHand %}
+    <div class="single-card {{ card.getSuit() }}">
+        {{ card.getAsString() }}
+    </div>
+{% endfor %}
+
+<form method="post" action="{{ path('game_post') }}">
+    <input type="submit" name="start" value="Starta spelet">
+</form>
+{% endblock %}

@@ -2,20 +2,20 @@
 
 namespace App\Card;
 
-use App\Card\Card;
+use App\Card\CardGraphic;
 
 class CardHand
 {
-    /** @var array<Card> */
+    /** @var array<CardGraphic> */
     private array $hand = [];
 
-    public function addCard(Card $card): void
+    public function addCard(CardGraphic $card): void
     {
         $this->hand[] = $card;
     }
 
     /**
-     * @return array<Card>
+     * @return array<CardGraphic>
      */
     public function getHand(): array
     {

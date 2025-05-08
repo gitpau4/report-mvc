@@ -4,15 +4,21 @@
 
 {% block body %}
 <h1>Kortspel 21</h1>
+
 <p>Kortspelet tjugoett går ut på att dra kort och få ett sammanlagt värde av 21 eller så nära som möjligt, utan att gå över 21.</p>
+
 <p><b>Regler:</b></p>
 <ul>
     <li>Spelaren börjar att dra kort och när spelaren väljer att stanna går turen över till banken.</li>
     <li>Om spelaren får över 21 poäng vinner banken.</li>
     <li>Om banken får över 21 poäng vinner spelaren.</li>
     <li>Om spelaren och banken får lika poäng vinner banken.</li>
-    <li>Ess är värt 1 eller 14.</li>
+    <li>Ess är värt 1 eller 14. Har du mer än 7 poäng blir Ess 1, annars 14.</li>
 </ul>
+
 <p><a href="{{ path('game_doc') }}">Dokumentation</a></p>
-<p>knapp start game</p>
+
+<form method="post" action="{{ path('game_post') }}">
+    <input type="submit" name="start" value="Starta spelet">
+</form>
 {% endblock %}

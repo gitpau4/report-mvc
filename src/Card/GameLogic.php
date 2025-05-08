@@ -19,6 +19,16 @@ class GameLogic
         $this->bank = new Player("Bank");
     }
 
+    public function getPlayer(): Player
+    {
+        return $this->player;
+    }
+
+    public function getBank(): Player
+    {
+        return $this->bank;
+    }
+
     public function playerDraw(): int
     {
         $card = $this->deck->drawCard();

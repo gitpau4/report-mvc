@@ -3,6 +3,7 @@
 namespace App\Helper;
 
 use App\Card\DeckOfCards;
+use App\Card\GameLogic;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CardGameHelper

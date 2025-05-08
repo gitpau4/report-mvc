@@ -57,6 +57,32 @@
         winner = player
 </pre>
 
+<h3>Routes i controller</h3>
+<pre>
+    game get
+        render game template
+
+    game post
+        initierar värden
+        redirect till play 
+
+    play get 
+        hämtar session data
+        render play template
+
+    draw post 
+        hämta session värde 
+        använder draw metod från klass 
+        uppdaterar poäng
+        set session data
+        redirect till play 
+
+    stop post 
+        byter till banken
+        flash om vem som vann
+        redirect till play
+</pre>
+
 <h2>Klasser</h2>
 <ul>
     <li><strong>Card:</strong> Representerar ett spelkort med värde och färg.</li>
