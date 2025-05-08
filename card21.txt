@@ -34,3 +34,80 @@ create deck
 create player 
 create bank 
 
+routes:
+game get
+    render game templ
+        knapp till starta spel 
+game post
+    initierar värden
+    redirect till play 
+
+play get 
+    hämtar session data
+    render play templ
+        knapp dra kort 
+        knapp stanna
+
+draw post 
+    hämta session värde 
+    använder draw metod från klass 
+    uppdaterar poäng
+    set session data
+    redirect till play 
+
+stop post 
+    byter till banken
+    flash om vem som vann
+    redirect till play?
+
+draw metod i klassen GameLogic:
+card = draw one from DeckOfCards
+add drawn card to hand 
+update player points
+if player points > 21:
+    player points = 0
+return player points
+
+räkna ut player points metod i klassen CardHand:
+getPoints():
+points = 0
+
+for each card:
+    if value is 'A':
+        addValue = 1
+        if points <= 7:
+            addValue = 14
+    elif value is 'J':
+        addValue = 11
+    elif value is 'Q':
+        addValue = 12
+    elif value is 'K':
+        addValue = 13
+
+    points += int(addValue)
+
+return points
+
+bank draws metod i klassen GameLogic:
+while bank points < 17
+    draw card to bank 
+    update bank points
+if bank points > 21:
+    winner = player
+elif bank points >= player points:
+    winner = bank
+else
+    winner = player
+
+GameLogic:
+attrubyt:
+deck 
+players (player och bank)
+turn 
+winner 
+
+metoder:
+player draw 
+bank draw 
+get ställning 
+
