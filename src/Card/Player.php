@@ -15,6 +15,16 @@ class Player
         $this->hand = new CardHand();
     }
 
+    public function getHand(): CardHand
+    {
+        return $this->hand;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
     public function getPoints(): int
     {
         return $this->hand->getPoints();

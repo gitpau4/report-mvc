@@ -9,7 +9,7 @@ class CardHand
     /** @var array<Card> */
     private array $hand = [];
 
-    public function add(Card $card): void
+    public function addCard(Card $card): void
     {
         $this->hand[] = $card;
     }
@@ -49,5 +49,31 @@ class CardHand
             $suits[] = $card->getSuit();
         }
         return $suits;
+    }
+
+    public function getPoints(): int
+    {
+        $points = 0;
+
+        foreach ($this->getValues() as $value) {
+            $valToAdd = $value; // initierar med värdet för att undivka else sats
+
+            if ($value === 'A') {
+                $valToAdd = 14;
+                if ($points > 7) {
+                    $valToAdd = 1;
+                }
+            } elseif ($value === 'J') {
+                $valToAdd = 11;
+            } elseif ($value === 'Q') {
+                $valToAdd = 12;
+            } elseif ($value === 'K') {
+                $valToAdd = 13;
+            }
+
+            $points += intval($valToAdd);
+        }
+
+        return $points;
     }
 }
