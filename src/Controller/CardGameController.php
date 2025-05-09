@@ -173,6 +173,7 @@ class CardGameController extends AbstractController
     {
         // skapa spelet
         $game = new GameLogic();
+        $game->shuffleDeck();
         $session->set('game', $game);
 
         return $this->redirectToRoute('game_play');
@@ -199,5 +200,51 @@ class CardGameController extends AbstractController
         ];
 
         return $this->render('game21/play.html.twig', $data);
+    }
+
+    #[Route('/game/draw', name: 'game_draw', methods: ['POST'])]
+    public function gameDraw(
+        SessionInterface $session
+    ): Response
+    {
+        $game = $session->get('game');
+        if (!$game) {
+            return $this->redirectToRoute('game');
+        }
+
+        $currentPoint = $game->playerDraw();
+        if ($game->isOverLimit($currentPoint)) {
+            $this->addFlash(
+                'notice',
+                'Du fick mer än 21 poäng, banken vann!'
+            );
+        }
+
+        $session->set('game', $game);
+
+        return $this->redirectToRoute('game_play');
+    }
+
+    #[Route('/game/stop', name: 'game_stop', methods: ['POST'])]
+    public function gameStop(
+        SessionInterface $session
+    ): Response
+    {
+        $game = $session->get('game');
+        if (!$game) {
+            return $this->redirectToRoute('game');
+        }
+
+        $game->bankDraw();
+        $winner = $game->getWinner();
+        
+        $this->addFlash(
+            'notice',
+            "$winner vann!"
+        );
+
+        $session->set('game', $game);
+
+        return $this->redirectToRoute('game_play');
     }
 }

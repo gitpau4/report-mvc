@@ -5,15 +5,40 @@
 {% block body %}
 <h1>Kortspel 21 SPELAR</h1>
 
+{{ include('flash.html.twig') }}
+
+<form method="post" action="{{ path('game_draw') }}">
+    <input type="submit" name="draw" value="Dra ett kort" class="button">
+</form>
+
+<form method="post" action="{{ path('game_stop') }}">
+    <input type="submit" name="stop" value="Stanna" class="button">
+</form>
+
+<form method="post" action="{{ path('game_post') }}">
+    <input type="submit" name="again" value="Starta igen" class="button">
+</form>
+
 <h2>Dina poäng: {{ playerPoints }}</h2>
 
+<h3>Dina kort:</h3>
+<div class="card-container">
 {% for card in playerHand %}
     <div class="single-card {{ card.getSuit() }}">
         {{ card.getAsString() }}
     </div>
 {% endfor %}
+</div>
 
-<form method="post" action="{{ path('game_post') }}">
-    <input type="submit" name="start" value="Starta spelet">
-</form>
+<h2>Bankens poäng: {{ bankPoints }}</h2>
+
+<h3>Bankens kort:</h3>
+<div class="card-container">
+{% for card in bankHand %}
+    <div class="single-card {{ card.getSuit() }}">
+        {{ card.getAsString() }}
+    </div>
+{% endfor %}
+</div>
+
 {% endblock %}
