@@ -7,21 +7,26 @@
 
 {{ include('flash.html.twig') }}
 
-<form method="post" action="{{ path('game_draw') }}">
-    <input type="submit" name="draw" value="Dra ett kort" class="button">
-</form>
+<div class="game-button-container">
 
-<form method="post" action="{{ path('game_stop') }}">
-    <input type="submit" name="stop" value="Stanna" class="button">
-</form>
+    {% if not isGameOver %}
+    <form method="post" action="{{ path('game_draw') }}">
+        <input type="submit" name="draw" value="Dra ett kort" class="button">
+    </form>
 
-<form method="post" action="{{ path('game_post') }}">
-    <input type="submit" name="again" value="Starta igen" class="button">
-</form>
+    <form method="post" action="{{ path('game_stop') }}">
+        <input type="submit" name="stop" value="Stanna" class="button">
+    </form>
+    {% endif %}
 
-<h2>Dina poäng: {{ playerPoints }}</h2>
+    <form method="post" action="{{ path('game_post') }}">
+        <input type="submit" name="again" value="Starta igen" class="button">
+    </form>
+</div>
 
-<h3>Dina kort:</h3>
+<h2>Spelare poäng: {{ playerPoints }}</h2>
+
+<h3>Spelare kort:</h3>
 <div class="card-container">
 {% for card in playerHand %}
     <div class="single-card {{ card.getSuit() }}">

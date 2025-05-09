@@ -197,6 +197,7 @@ class CardGameController extends AbstractController
             "playerPoints" => $player->getPoints(),
             "bankHand" => $bank->getHand()->getHand(),
             "bankPoints" => $bank->getPoints(),
+            "isGameOver" => $game->isGameOver(),
         ];
 
         return $this->render('game21/play.html.twig', $data);
@@ -218,6 +219,8 @@ class CardGameController extends AbstractController
                 'notice',
                 'Du fick mer än 21 poäng, banken vann!'
             );
+
+            $game->setGameOver();
         }
 
         $session->set('game', $game);
@@ -242,6 +245,8 @@ class CardGameController extends AbstractController
             'notice',
             "$winner vann!"
         );
+
+        $game->setGameOver();
 
         $session->set('game', $game);
 

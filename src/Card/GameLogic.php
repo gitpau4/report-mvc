@@ -11,6 +11,7 @@ class GameLogic
     private Player $player;
     private Player $bank;
     private int $limit = 21;
+    private bool $isGameOver = false;
 
     public function __construct()
     {
@@ -71,5 +72,15 @@ class GameLogic
         }
 
         return $this->player->getName();
+    }
+
+    public function setGameOver(): void
+    {
+        $this->isGameOver = true;
+    }
+
+    public function isGameOver(): bool
+    {
+        return $this->isGameOver;
     }
 }
