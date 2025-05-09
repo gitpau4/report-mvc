@@ -139,4 +139,36 @@ class CardGameControllerJson extends AbstractController
         );
         return $response;
     }
+
+    #[Route("/api/game", name: "api_game", methods: ['GET'])]
+    public function apiGame(
+        SessionInterface $session
+    ): Response {
+
+        $data = [];
+
+        $game = $session->get('game');
+        if (!$game) {
+            $data['notice'] = ['Inget pågående spel'];
+        }
+
+        $player = $game->getPlayer();
+        $bank = $game->getBank();
+
+        $data['player'] = [
+            'hand' => $player->getHand()->getValues(),
+            'points' => $player->getPoints(),
+        ];
+
+        $data['bank'] = [
+            'hand' => $bank->getHand()->getValues(),
+            'points' => $bank->getPoints(),
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
 }
