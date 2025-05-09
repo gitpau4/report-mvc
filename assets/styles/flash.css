@@ -3,6 +3,7 @@
     color: #004085;
     background-color: #cce5ff;
     border-color: #b8daff;
+    margin: 0.5rem;
 }
 .flash-notice:before {
     content: "ⓘ";

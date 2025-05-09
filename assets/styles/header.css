@@ -5,12 +5,13 @@
 }
 
 .site-title {
-    font-size: 2em;
+    font-size: 3em;
+    font-family: 'Chicle';
     margin: 20px;
     position: relative;
     top: 20px;
-    color: var(--darkblue);
-    background-color: var(--light);
+    color: var(--warm);
+    /* background-color: var(--light); */
 }
 
 .site-nav ul {

@@ -6,18 +6,25 @@ body {
     margin: 0;
     padding: 0;
     overflow-y: scroll;
-    font-family: sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: serif;
+    font-family: 'Merriweather', serif;
     font-weight: normal;
 }
 
+input[type="submit"] {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
 :root {
-    --darkblue: #0b2833;
+    /* --darkblue: #0b2833; */
+    --darkblue: #1b1b35;
     --blue: #3d7c84;
-    --lightblue: #619497;
-    --warm: #dfad61;
-    --light: #decfb4;
+    /* --lightblue: #619497; */
+    --lightblue: #C5D1D9;
+    --warm: #ffeda8;
+    /* --light: #decfb4; */
+    --light: #EFEDE9;
 }
