@@ -70,6 +70,35 @@
                     <li><a href="https://dbwebb.se/guide/kom-igang-med-objektorienterad-programmering-i-php">dbwebb Kom igång med Objektorienterad programmering i PHP</a></li>
                 </ul>
             </p>
-            </section>
+        </section>
+
+        <section id="kmom03">
+            <h2>Kmom03</h2>
+            <p>
+                Jag tyckte att det hjälpte mig att börja programmera när jag redan hade ett flödesdiagram och pseudokod. 
+                Vanligtvis brukar jag börja koda ganska direkt och inte ha en väldigt genomtänkt plan. 
+                För större projekt är det definitivt en fördel att ha en plan innan man börjar koda, för att få så bra kod och struktur som möjligt. 
+                Jag tror även att det kan spara en del tid. 
+                Innan jag började projektet trodde jag att jag skulle lägga ganska lite tid på förberedelsen med flödesdiagram och pseudokod, och mycket tid på själva kodandet. 
+                Men det visade sig inte bli som jag tänkte, jag la mycket mer tid på förberedelsen än jag trodde, sen blev inte slutresultatet exakt enligt förberedelsen, men ganska likt. 
+                Att komma igång med kodandet kändes lätt eftersom jag redan visste till stor del vad som skulle göras, så det kändes inte lika överväldigande att komma igång. 
+            </p>
+            <p>
+                För att lösa uppgiften skapade jag två ytterligare klasser, Player och GameLogic, och använde de klasser som redan fanns från kmom02. 
+                GameLogic har övergripande koll på spelets logik, och innehåller både spelare och kortlek. 
+                Player klassen representerar en spelare eller bank, och den har inte direkt någon egen metod förutom två getters och en metod som hämtar från CardHand. 
+                Därför var jag lite osäker på om den klassen var nödvändig eller om det räckte med bara CardHand. 
+                Men jag tror ändå det var bra att jag behöll Player klassen, för det gör koden i GameLogic tydligare, och kan vara bra att ha om man utökar spelet. 
+                Jag är ganska nöjd med resultatet, men spelet hade kunnat förbättras genom att göra några av de valfria kraven, om jag hade haft tid över. 
+                Jag tycker jag fick till en ganska 'smal' controller fil med lite kod, men man hade kanske kunnat få till ännu mindre kod och ha fler metoder i klasserna. 
+            </p>
+            <p>
+                Min känsla för att koda med ramverket Symfony är jag lär mig att uppskatta strukturen mellan logik och presentation med templates. 
+                Jag tycker att Symfony gör det lite lättare att jobba med sessionen, då det finns bra inbyggda funktioner till sessionen. 
+            </p>
+            <p>
+                Mitt TIL för detta kmom är hur man gör flödesdiagram.
+            </p>
+        </section>
     </article>
 {% endblock %}
