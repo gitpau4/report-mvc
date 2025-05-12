@@ -39,7 +39,9 @@ class GameLogic
     {
         $card = $this->deck->drawCard();
         $playerHand = $this->player->getHand();
-        $playerHand->addCard($card);
+        if ($card !== null) {
+            $playerHand->addCard($card);
+        }
         return $this->player->getPoints();
     }
 
@@ -49,7 +51,9 @@ class GameLogic
 
         while ($this->bank->getPoints() < 17) {
             $card = $this->deck->drawCard();
-            $bankHand->addCard($card);
+            if ($card !== null) {
+                $bankHand->addCard($card);
+            }
         }
 
         return $this->bank->getPoints();
