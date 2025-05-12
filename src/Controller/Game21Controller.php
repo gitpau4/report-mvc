@@ -32,8 +32,7 @@ class Game21Controller extends AbstractController
     #[Route('/game', name: 'game_post', methods: ['POST'])]
     public function gameCallback(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         // skapa spelet
         $game = new GameLogic();
         $game->shuffleDeck();
@@ -45,8 +44,7 @@ class Game21Controller extends AbstractController
     #[Route('/game/play', name: 'game_play', methods: ['GET'])]
     public function play(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $game = $session->get('game');
         if (!$game) {
             return $this->redirectToRoute('game');
@@ -69,8 +67,7 @@ class Game21Controller extends AbstractController
     #[Route('/game/draw', name: 'game_draw', methods: ['POST'])]
     public function gameDraw(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $game = $session->get('game');
         if (!$game) {
             return $this->redirectToRoute('game');
@@ -94,8 +91,7 @@ class Game21Controller extends AbstractController
     #[Route('/game/stop', name: 'game_stop', methods: ['POST'])]
     public function gameStop(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $game = $session->get('game');
         if (!$game) {
             return $this->redirectToRoute('game');
@@ -103,7 +99,7 @@ class Game21Controller extends AbstractController
 
         $game->bankDraw();
         $winner = $game->getWinner();
-        
+
         $this->addFlash(
             'notice',
             "$winner vann!"
