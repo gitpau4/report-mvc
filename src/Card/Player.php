@@ -4,6 +4,11 @@ namespace App\Card;
 
 use App\Card\CardHand;
 
+/**
+ * Represents a player in a card game.
+ * 
+ * @autor Paula Frölander, pafo24
+ */
 class Player
 {
     private string $name;

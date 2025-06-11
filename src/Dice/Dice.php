@@ -6,9 +6,14 @@ class Dice
 {
     protected $value;
 
+    // public function __construct()
+    // {
+    //     $this->value = null;
+    // }
+
     public function __construct()
     {
-        $this->value = null;
+        $this->value = random_int(1, 6);
     }
 
     public function roll(): int

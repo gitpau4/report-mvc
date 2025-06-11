@@ -2,6 +2,11 @@
 
 namespace App\Card;
 
+/**
+ * A visual representation of a card.
+ * 
+ * @autor Paula Frölander, pafo24
+ */
 class CardGraphic extends Card
 {
     /** @var array<string, string> */

@@ -4,6 +4,11 @@ namespace App\Card;
 
 use App\Card\CardGraphic;
 
+/**
+ * Represents a deck of 52 cards.
+ * 
+ * @autor Paula Frölander, pafo24
+ */
 class DeckOfCards
 {
     /** @var array<CardGraphic> */

@@ -2,6 +2,11 @@
 
 namespace App\Card;
 
+/**
+ * Represents a card.
+ * 
+ * @autor Paula Frölander, pafo24
+ */
 class Card
 {
     protected string $value;
