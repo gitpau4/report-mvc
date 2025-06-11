@@ -37,16 +37,46 @@ class CardHandTest extends TestCase
     }
 
     /**
-     * Verify addCard method.
+     * Test getValues and getSuits methods.
      */
-    public function testAddCard()
+    public function testGetSuitsAndValues()
     {
         $cardHand = new CardHand();
-        $card = new CardGraphic("9", "clubs");
+        $card1 = new CardGraphic("9", "clubs");
+        $card2 = new CardGraphic("K", "diamonds");
 
-        $cardHand->addCard($card);
-        $res = $cardHand->getHand();
-        $exp = [$card];
+        $cardHand->addCard($card1);
+        $cardHand->addCard($card2);
+
+        $resValues = $cardHand->getValues();
+        $expValues = ["9", "K"];
+        $this->assertEquals($expValues, $resValues);
+
+        $resSuits = $cardHand->getSuits();
+        $expSuits = ["clubs", "diamonds"];
+        $this->assertEquals($expSuits, $resSuits);
+    }
+
+    /**
+     * Test getPoints method.
+     */
+    public function testGetPoints()
+    {
+        $cardHand = new CardHand();
+        $card1 = new CardGraphic("9", "clubs");
+        $card2 = new CardGraphic("A", "diamonds");
+        $card3 = new CardGraphic("J", "hearts");
+        $card4 = new CardGraphic("Q", "hearts");
+        $card5 = new CardGraphic("K", "diamonds");
+
+        $cardHand->addCard($card1);
+        $cardHand->addCard($card2);
+        $cardHand->addCard($card3);
+        $cardHand->addCard($card4);
+        $cardHand->addCard($card5);
+
+        $res = $cardHand->getPoints();
+        $exp = 46;
         $this->assertEquals($exp, $res);
     }
 }
