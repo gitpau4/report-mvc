@@ -35,6 +35,11 @@ class GameLogic
         return $this->bank;
     }
 
+    public function getDeck(): DeckOfCards
+    {
+        return $this->deck;
+    }
+
     public function shuffleDeck(): void
     {
         $this->deck->shuffle();
