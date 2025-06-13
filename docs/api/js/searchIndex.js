@@ -98,42 +98,42 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Builds\u0020the\u0020deck\u0020of\u0020cards\u0020with\u002013\u0020different\u0020values\u0020and\u00204\u0020different\u0020suits.",
             "url": "classes/App-Card-DeckOfCards.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AgetDeck\u0028\u0029",
             "name": "getDeck",
-            "summary": "",
+            "summary": "Returns\u0020array\u0020with\u0020cards,\u0020the\u0020deck.",
             "url": "classes/App-Card-DeckOfCards.html#method_getDeck"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AgetOriginalDeck\u0028\u0029",
             "name": "getOriginalDeck",
-            "summary": "",
+            "summary": "Returns\u0020deck\u0020in\u0020the\u0020original\u0020order.",
             "url": "classes/App-Card-DeckOfCards.html#method_getOriginalDeck"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003Ashuffle\u0028\u0029",
             "name": "shuffle",
-            "summary": "",
+            "summary": "Shuffles\u0020the\u0020cards\u0020in\u0020the\u0020deck.",
             "url": "classes/App-Card-DeckOfCards.html#method_shuffle"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003Areset\u0028\u0029",
             "name": "reset",
-            "summary": "",
+            "summary": "Resets\u0020the\u0020deck\u0020to\u0020its\u0020original\u0020order.",
             "url": "classes/App-Card-DeckOfCards.html#method_reset"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AdrawCard\u0028\u0029",
             "name": "drawCard",
-            "summary": "",
+            "summary": "Draws\u0020the\u0020last\u0020card\u0020from\u0020the\u0020deck\u0020and\u0020returns\u0020it.",
             "url": "classes/App-Card-DeckOfCards.html#method_drawCard"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AdrawNumberCards\u0028\u0029",
             "name": "drawNumberCards",
-            "summary": "",
+            "summary": "Draws\u0020given\u0020number\u0020of\u0020cards\u0020from\u0020deck\u0020and\u0020returns\u0020them\u0020in\u0020an\u0020array.",
             "url": "classes/App-Card-DeckOfCards.html#method_drawNumberCards"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003AgetNumberOfCards\u0028\u0029",
             "name": "getNumberOfCards",
-            "summary": "",
+            "summary": "Returns\u0020amount\u0020of\u0020cards\u0020left\u0020in\u0020the\u0020deck.",
             "url": "classes/App-Card-DeckOfCards.html#method_getNumberOfCards"
         },                {
             "fqsen": "\\App\\Card\\DeckOfCards\u003A\u003A\u0024deck",
@@ -175,6 +175,11 @@ Search.appendIndex(
             "name": "getBank",
             "summary": "",
             "url": "classes/App-Card-GameLogic.html#method_getBank"
+        },                {
+            "fqsen": "\\App\\Card\\GameLogic\u003A\u003AgetDeck\u0028\u0029",
+            "name": "getDeck",
+            "summary": "",
+            "url": "classes/App-Card-GameLogic.html#method_getDeck"
         },                {
             "fqsen": "\\App\\Card\\GameLogic\u003A\u003AshuffleDeck\u0028\u0029",
             "name": "shuffleDeck",
