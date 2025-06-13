@@ -6,7 +6,7 @@ use App\Card\CardGraphic;
 
 /**
  * Represents a hand of cards.
- * 
+ *
  * @autor Paula Frölander, pafo24
  */
 class CardHand

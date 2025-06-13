@@ -7,7 +7,7 @@ use App\Card\Player;
 
 /**
  * Handles game logic for game 21.
- * 
+ *
  * @autor Paula Frölander, pafo24
  */
 class GameLogic

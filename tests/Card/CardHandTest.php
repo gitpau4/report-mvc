@@ -12,7 +12,7 @@ class CardHandTest extends TestCase
     /**
      * Construct object and verify it is a CardHand object.
      */
-    public function testCreateObject()
+    public function testCreateObject(): void
     {
         $cardHand = new CardHand();
         $this->assertInstanceOf("\App\Card\CardHand", $cardHand);
@@ -21,7 +21,7 @@ class CardHandTest extends TestCase
     /**
      * Verify that class can add card to hand and return number of cards in hand.
      */
-    public function testAddCard()
+    public function testAddCard(): void
     {
         $cardHand = new CardHand();
         $card = new CardGraphic("9", "clubs");
@@ -39,7 +39,7 @@ class CardHandTest extends TestCase
     /**
      * Test getValues and getSuits methods.
      */
-    public function testGetSuitsAndValues()
+    public function testGetSuitsAndValues(): void
     {
         $cardHand = new CardHand();
         $card1 = new CardGraphic("9", "clubs");
@@ -60,7 +60,7 @@ class CardHandTest extends TestCase
     /**
      * Test getPoints method.
      */
-    public function testGetPoints()
+    public function testGetPoints(): void
     {
         $cardHand = new CardHand();
         $card1 = new CardGraphic("9", "clubs");

@@ -12,7 +12,7 @@ class PlayerTest extends TestCase
     /**
      * Construct object and verify it is a Player object.
      */
-    public function testCreateObject()
+    public function testCreateObject(): void
     {
         $player = new Player("name");
         $this->assertInstanceOf("\App\Card\Player", $player);
@@ -24,7 +24,7 @@ class PlayerTest extends TestCase
     /**
      * Test getPoints method.
      */
-    public function testPlayerHand()
+    public function testPlayerHand(): void
     {
         $player = new Player("name");
         $hand = $player->getHand();

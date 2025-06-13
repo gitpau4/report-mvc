@@ -12,7 +12,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Construct object and verify it is a DeckOfCards object.
      */
-    public function testCreateObject()
+    public function testCreateObject(): void
     {
         $deck = new DeckOfCards();
         $this->assertInstanceOf("\App\Card\DeckOfCards", $deck);
@@ -21,13 +21,12 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test get deck methods.
      */
-    public function testgetDeck()
+    public function testgetDeck(): void
     {
         $deck = new DeckOfCards();
-        
+
         $res = $deck->getDeck();
         $this->assertCount(52, $res);
-        $this->assertIsArray($res);
 
         $original = $deck->getOriginalDeck();
         $this->assertEquals($res, $original);
@@ -36,7 +35,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test that shuffle method changes the deck and reset method changes it to original.
      */
-    public function testShuffle()
+    public function testShuffle(): void
     {
         $deck = new DeckOfCards();
         $before = $deck->getDeck();
@@ -56,15 +55,14 @@ class DeckOfCardsTest extends TestCase
     /**
      * Test draw one or more cards.
      */
-    public function testdrawCards()
+    public function testdrawCards(): void
     {
         $deck = new DeckOfCards();
         $drawnCard = $deck->drawCard();
         $this->assertCount(51, $deck->getDeck());
         $this->assertEquals(new CardGraphic("A", "diamonds"), $drawnCard);
 
-        $drawnCards = $deck->drawNumberCards(3);
+        $deck->drawNumberCards(3);
         $this->assertCount(48, $deck->getDeck());
-        $this->assertIsArray($drawnCards);
     }
 }

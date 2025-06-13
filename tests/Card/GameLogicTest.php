@@ -12,7 +12,7 @@ class GameLogicTest extends TestCase
     /**
      * Construct object and verify it is a GameLogic object.
      */
-    public function testCreateObject()
+    public function testCreateObject(): void
     {
         $logic = new GameLogic();
         $this->assertInstanceOf("\App\Card\GameLogic", $logic);
@@ -27,7 +27,7 @@ class GameLogicTest extends TestCase
     /**
      * Test shuffle method.
      */
-    public function testShuffleDeck()
+    public function testShuffleDeck(): void
     {
         $logic = new GameLogic();
         $before = $logic->getDeck()->getDeck();
@@ -39,7 +39,7 @@ class GameLogicTest extends TestCase
     /**
      * Test draw methods.
      */
-    public function testDraw()
+    public function testDraw(): void
     {
         $logic = new GameLogic();
 
@@ -59,7 +59,7 @@ class GameLogicTest extends TestCase
     /**
      * Test limit method.
      */
-    public function testLimit()
+    public function testLimit(): void
     {
         $logic = new GameLogic();
 
@@ -70,7 +70,7 @@ class GameLogicTest extends TestCase
     /**
      * Test get winner method.
      */
-    public function testGetWinner()
+    public function testGetWinner(): void
     {
         $logic = new GameLogic();
 
@@ -104,7 +104,7 @@ class GameLogicTest extends TestCase
     /**
      * Test game over methods.
      */
-    public function testGameOver()
+    public function testGameOver(): void
     {
         $logic = new GameLogic();
         $logic->setGameOver();

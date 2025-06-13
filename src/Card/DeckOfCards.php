@@ -6,7 +6,7 @@ use App\Card\CardGraphic;
 
 /**
  * Represents a deck of 52 cards.
- * 
+ *
  * @autor Paula Frölander, pafo24
  */
 class DeckOfCards
@@ -39,7 +39,7 @@ class DeckOfCards
 
     /**
      * Returns array with cards, the deck.
-     * 
+     *
      * @return array<CardGraphic>
      */
     public function getDeck(): array
@@ -49,7 +49,7 @@ class DeckOfCards
 
     /**
      * Returns deck in the original order.
-     * 
+     *
      * @return array<CardGraphic>
      */
     public function getOriginalDeck(): array
@@ -83,7 +83,7 @@ class DeckOfCards
 
     /**
      * Draws given number of cards from deck and returns them in an array.
-     * 
+     *
      * @return array<CardGraphic>
      */
     public function drawNumberCards(int $number): array
@@ -103,7 +103,7 @@ class DeckOfCards
 
     /**
      * Returns amount of cards left in the deck.
-     * 
+     *
      * @return int
      */
     public function getNumberOfCards(): int
