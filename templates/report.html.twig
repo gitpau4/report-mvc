@@ -100,5 +100,35 @@
                 Mitt TIL för detta kmom är hur man gör flödesdiagram.
             </p>
         </section>
+
+        <section id="kmom04">
+            <h2>Kmom04</h2>
+            <p>
+                Jag upplever att det är bra att testa sin kod genom att skriva testfall med phpunit, då det är i slutändan smidigare än att försöka testa koden på andra sätt. 
+                Det tar självklart tid att skriva all testkod, men det gör testningen smidigare när man är klar. 
+                Vissa metoder och klasser kändes enkla att testa och andra mer krävande. 
+                Ibland var det svårt att veta om testfallet var bra och användbart, men kodtecknings dokummentationen hjälpte en att skriva täckande testfall. 
+                Jag nådde 100% kodtäckning på samtliga klasser. 
+            </p>
+            <p>
+                Jag upplever min kod som ganska testbar. 
+                Jag har ganska många små metoder med konkreta ansvarsområden vilket gör det lättare att testa, än om jag hade haft få stora metoder. 
+            </p>
+            <p>
+                Jag lade till en metod i GameLogic klassen för att göra koden mer testbar. 
+                Jag behövde nämligen komma åt 'deck' för att kunna testa shuffle-metoden, så det var bara att lägga till en getDeck metod. 
+                Annars ändrade jag inget i koden. 
+            </p>
+            <p>
+                Jag tror absolut att en testbar kod och 'snygg och ren' kod hänger ihop. 
+                Jag tänker att en testbar kod är sammanhängande och har bra strukturerad, för att vara enkel att testa. 
+                Även att metoderna är lagom uppdelade, alltså inte allt för stora metoder som gör väldigt mycket, utan det är lättare att testa flera mindre metoder. 
+                Det gör också koden mer läsbar och enkel att förstå, vilket jag tycker blir 'snyggt och rent'. 
+                Jag skulle alltså säga att testning inte bara är bra för att hitta fel utan också för att göra sin kod bättre och snyggare. 
+            </p>
+            <p>
+                Mitt TIL för detta kmom är hur man skriver enhetstester i phpunit, och att det finns lite olika asserts som till exempel assertCount för att verifiera antalet element i en array.
+            </p>
+        </section>
     </article>
 {% endblock %}
