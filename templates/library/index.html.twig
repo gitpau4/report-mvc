@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LibraryController!{% endblock %}
+{% block title %}Library{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,14 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Welcome to this library</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/pau/dbwebb-kurser/mvc/me/report/src/Controller/LibraryController.php</code></li>
-        <li>Your template at <code>/home/pau/dbwebb-kurser/mvc/me/report/templates/library/index.html.twig</code></li>
-    </ul>
+    <div class="button-container">
+        <a href="{{ path('library_create') }}" class="button">Add new book</a>
+
+        {# <form method="post" action="{{ path('game_stop') }}">
+            <input type="submit" name="stop" value="Stanna" class="button">
+        </form> #}
+    </div>
 </div>
 {% endblock %}
