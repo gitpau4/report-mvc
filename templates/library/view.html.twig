@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View{% endblock %}
+
+{% block body %}
+
+<h1>View all books</h1>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Show</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+{% for book in books %}
+    <tr>
+        <td>{{ book.getTitle|e }}</td>
+        <td><a href="{{ path('library_view_one', {id: book.getId()}) }}">&#x1F50D;</a></td>
+        <td><a href="{{ path('library_view_one', {id: book.getId()}) }}">&#x1F589;</a></td>
+        <td><a href="{{ path('library_view_one', {id: book.getId()}) }}">&#x1F5D1;</a></td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

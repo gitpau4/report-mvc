@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ book.getTitle|e }}{% endblock %}
+
+{% block body %}
+
+<h1>{{ book.getTitle|e }}</h1>
+<p><b>Title</b>: {{ book.getTitle|e }}</p>
+<p><b>ISBN</b>: {{ book.getIsbn|e }}</p>
+<p><b>Author</b>: {{ book.getAuthor|e }}</p>
+<p><b>Image</b>: {{ book.getImage|e }}</p>
+
+{% endblock %}

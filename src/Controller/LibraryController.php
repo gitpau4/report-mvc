@@ -37,11 +37,38 @@ final class LibraryController extends AbstractController
             $entityManager->persist($book);
             $entityManager->flush();
 
-            // return $this->redirectToRoute('book_index');
+            return $this->redirectToRoute('library_view_all');
         }
 
         return $this->render('library/create.html.twig', [
             'form' => $form
         ]);
+    }
+
+    #[Route('/library/view', name: 'library_view_all')]
+    public function viewAllBooks(
+        BookRepository $bookRepository
+    ): Response {
+        $books = $bookRepository->findAll();
+
+        $data = [
+            'books' => $books
+        ];
+
+        return $this->render('library/view.html.twig', $data);
+    }
+
+    #[Route('/library/view/{id}', name: 'library_view_one')]
+    public function viewOneBook(
+        BookRepository $bookRepository,
+        int $id
+    ): Response {
+        $book = $bookRepository->find($id);
+
+        $data = [
+            'book' => $book
+        ];
+
+        return $this->render('library/view_one.html.twig', $data);
     }
 }

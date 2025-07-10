@@ -14,9 +14,9 @@
     <div class="button-container">
         <a href="{{ path('library_create') }}" class="button">Add new book</a>
 
-        {# <form method="post" action="{{ path('game_stop') }}">
-            <input type="submit" name="stop" value="Stanna" class="button">
-        </form> #}
+        <a href="{{ path('library_view_all') }}" class="button">View books</a>
     </div>
+
+    <img src="{{ asset('img/library.jpg') }}" alt="">
 </div>
 {% endblock %}
