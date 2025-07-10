@@ -65,10 +65,69 @@ final class LibraryController extends AbstractController
     ): Response {
         $book = $bookRepository->find($id);
 
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$id
+            );
+        }
+
         $data = [
             'book' => $book
         ];
 
         return $this->render('library/view_one.html.twig', $data);
+    }
+
+    #[Route('/library/update/{id}', name: 'library_update')]
+    public function updateBook(
+        BookRepository $bookRepository,
+        Request $request,
+        ManagerRegistry $doctrine,
+        int $id
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $book = $bookRepository->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$id
+            );
+        }
+
+        $form = $this->createForm(BookType::class, $book);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('library_view_one', ['id' => $book->getId()]);
+        }
+
+        return $this->render('library/update.html.twig', [
+            'form' => $form,
+            'book' => $book
+        ]);
+    }
+
+    #[Route('/library/delete/{id}', name: 'library_delete', methods: ['POST'])]
+    public function deleteBook(
+        BookRepository $bookRepository,
+        Request $request,
+        ManagerRegistry $doctrine,
+        int $id
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $book = $bookRepository->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '.$id
+            );
+        }
+
+        $entityManager->remove($book);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('library_view_all');
     }
 }

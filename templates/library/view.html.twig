@@ -17,8 +17,12 @@
     <tr>
         <td>{{ book.getTitle|e }}</td>
         <td><a href="{{ path('library_view_one', {id: book.getId()}) }}">&#x1F50D;</a></td>
-        <td><a href="{{ path('library_view_one', {id: book.getId()}) }}">&#x1F589;</a></td>
-        <td><a href="{{ path('library_view_one', {id: book.getId()}) }}">&#x1F5D1;</a></td>
+        <td><a href="{{ path('library_update', {id: book.getId()}) }}">&#x1F589;</a></td>
+        <td>
+            <form action="{{ path('library_delete', {id: book.getId()}) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this book?');">
+                <input type="submit" value="&#x1F5D1;">
+            </form>
+        </td>
     </tr>
 {% endfor %}
 </table>

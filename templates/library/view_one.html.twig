@@ -10,4 +10,12 @@
 <p><b>Author</b>: {{ book.getAuthor|e }}</p>
 <p><b>Image</b>: {{ book.getImage|e }}</p>
 
+<div class="handle-book">
+    <a href="{{ path('library_update', {id: book.getId()}) }}">&#x1F589;</a>
+
+    <form action="{{ path('library_delete', {id: book.getId()}) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this book?');">
+        <input type="submit" value="&#x1F5D1;">
+    </form>
+</div>
+
 {% endblock %}
