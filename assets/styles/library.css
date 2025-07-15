@@ -1,7 +1,52 @@
+.welcome-library {
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+}
+
+.welcome-library h1 {
+    text-align: center;
+    margin: 20px;
+}
+
 .handle-book {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     margin-top: 1rem;
     margin-bottom: 1rem;
+    gap: 12px;
+}
+
+/* .handle-book a {
+    text-decoration: none;
+    border: 1px solid;
+    padding: 1px;
+    border-radius: 3px;
+} */
+
+.handle-book input[type="submit"] {
+    all: unset;
+}
+
+.book-form {
+    padding: 20px;
+}
+
+.book-form input {
+    padding: 6px;
+    margin: 5px;
+}
+
+.book-table {
+    border-collapse: collapse;
+}
+
+.book-table th, td {
+    padding: 8px;
+    border-bottom: 1px solid;
+}
+
+.book-table a {
+    text-decoration: none;
 }

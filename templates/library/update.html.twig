@@ -4,10 +4,12 @@
 
 {% block body %}
 
+<a href="{{ path('library_view_all') }}" class="button">&#x2190;</a>
+
 <h1>Update book</h1>
 
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'class': 'book-form'} }) }}
     {{ form_widget(form) }}
-    <input type="submit" value="Update">
+    <input type="submit" value="Update" class="button">
 {{ form_end(form) }}
 {% endblock %}

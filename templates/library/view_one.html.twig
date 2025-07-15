@@ -4,6 +4,8 @@
 
 {% block body %}
 
+<a href="{{ path('library_view_all') }}" class="button">&#x2190;</a>
+
 <h1>{{ book.getTitle|e }}</h1>
 <p><b>Title</b>: {{ book.getTitle|e }}</p>
 <p><b>ISBN</b>: {{ book.getIsbn|e }}</p>
@@ -11,10 +13,10 @@
 <p><b>Image</b>: {{ book.getImage|e }}</p>
 
 <div class="handle-book">
-    <a href="{{ path('library_update', {id: book.getId()}) }}">&#x1F589;</a>
+    <a href="{{ path('library_update', {id: book.getId()}) }}" class="button">&#x1F589; edit</a>
 
-    <form action="{{ path('library_delete', {id: book.getId()}) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this book?');">
-        <input type="submit" value="&#x1F5D1;">
+    <form action="{{ path('library_delete', {id: book.getId()}) }}" method="post" class="button" onsubmit="return confirm('Are you sure you want to delete this book?');">
+        <input type="submit" value="&#x1F5D1; delete">
     </form>
 </div>
 
