@@ -36,5 +36,15 @@
             <a href="{{ path('api_game') }}">/api/game</a>
             <p>Visar ställning mellan spelare och bank i kortspelet 21.</p>
         </li>
+
+        <li>
+            <a href="{{ path('json_show_books') }}">/api/library/books</a>
+            <p>Visar samtliga böcker i biblioteket.</p>
+        </li>
+
+        <li>
+            <a href="{{ path('book_by_isbn', {isbn: '978-91-7037-854-6'}) }}">/api/library/book/978-91-7037-854-6</a>
+            <p>Länk till bok i biblioteket via dess ISBN nummer.</p>
+        </li>
     </ul>
 {% endblock %}
