@@ -130,5 +130,41 @@
                 Mitt TIL för detta kmom är hur man skriver enhetstester i phpunit, och att det finns lite olika asserts som till exempel assertCount för att verifiera antalet element i en array.
             </p>
         </section>
+
+        <section id="kmom05">
+            <h2>Kmom05</h2>
+            <p>
+                Övningen med Doctrine gick bra. 
+                Jag stötte inte på några större problem under själva övningen direkt, 
+                men när jag skapade en ny databas till biblioteket så fick jag varningsmeddelande om att jag hade migrations från en tidigare databas kvar. 
+                Jag tog då bort de gamla migrationsfilerna och körde migrate igen, då gick det bra. 
+                Under övningen tänkte jag på att det var smidigt att skapa entiteter till databasen. 
+            </p>
+            <p>
+                Jag klurade ett tag på hur jag skulle bygga upp bibliotekets användargränssnitt. 
+                Jag ville ha det enkelt. 
+                Till en början tänkte jag ha en framsida med länkar till alla grejer man kan göra (skapa, visa, uppdatera, ta bort). 
+                Men jag insåg att det var lättare att bara ha 'skapa' och 'visa alla böcker' på framsidan, 
+                och sedan inuti visa-sidan kunna gå vidare till saker som har med specifika böcker att göra, till exempel uppdatera en viss bok. 
+                Jag la även till bakåt-knappar för att lättare kunna navigera runt. 
+            </p>
+            <p>
+                Att jobba med CRUD i ORM gick bra. 
+                Till skillnad från andra sätt så skriver man här ingen egen SQL kod, om man inte vill. 
+                Det är dock bra att man kan skriva egen SQL om man vill, jag vet inte riktigt vad jag föredrar än. 
+                Man kan få till kompaktare kod när man inte skriver massor av SQL kod, vilket är positivt. 
+                Det negativa med mycket automatgenererat är att man inte lär sig databas logiken själv riktigt. 
+            </p>
+            <p>
+                Att jobba med ORM känns relativt smidigt. 
+                Däremot känns det som att man har mindre 'insyn' i vad som händer i databasen jämfört med andra sätt att jobba mot databaser. 
+                Jag tror absolut att ORM är smidigare för stora projekt med mycket data. 
+                Det är ganska skönt att slippa skriva upprepande SQL kod, det gör att man sparar tid. 
+                Det är även lättare att få till strukturerad kod. 
+            </p>
+            <p>
+                Mitt TIL för detta kmom är att man kan skapa automatgenererade formulär kopplat till entiteter, med hjälp av Symfony. 
+            </p>
+        </section>
     </article>
 {% endblock %}
