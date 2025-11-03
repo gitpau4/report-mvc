@@ -88,13 +88,16 @@ class DeckOfCards
      */
     public function drawNumberCards(int $number): array
     {
+        if ($number > $this->getNumberOfCards()) {
+            return [];
+        }
+
         $drawedCards = [];
-        if ($number <= $this->getNumberOfCards()) {
-            for ($i = 0; $i < $number; $i++) {
-                $card = array_pop($this->deck);
-                if ($card !== null) {
-                    $drawedCards[] = $card;
-                }
+        for ($i = 0; $i < $number; $i++) {
+            $card = array_pop($this->deck);
+            
+            if ($card !== null) {
+                $drawedCards[] = $card;
             }
         }
 

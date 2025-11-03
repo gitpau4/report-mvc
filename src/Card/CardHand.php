@@ -60,23 +60,21 @@ class CardHand
     {
         $points = 0;
 
-        foreach ($this->getValues() as $value) {
-            $valToAdd = $value; // initierar med värdet för att undivka else sats
+        $cardValues = [
+            'J' => 11,
+            'Q' => 12,
+            'K' => 13,
+            'A' => 14,
+        ];
 
-            if ($value === 'A') {
-                $valToAdd = 14;
-                if ($points > 7) {
-                    $valToAdd = 1;
-                }
-            } elseif ($value === 'J') {
-                $valToAdd = 11;
-            } elseif ($value === 'Q') {
-                $valToAdd = 12;
-            } elseif ($value === 'K') {
-                $valToAdd = 13;
+        foreach ($this->getValues() as $value) {
+            $valToAdd = $cardValues[$value] ?? intval($value);
+            
+            if ($value === 'A' && $points > 7) {
+                $valToAdd = 1;
             }
 
-            $points += intval($valToAdd);
+            $points += $valToAdd;
         }
 
         return $points;
