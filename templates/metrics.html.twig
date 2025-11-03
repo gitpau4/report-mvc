@@ -1,0 +1,159 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block body %}
+    <h1>Metrics analys</h1>
+    <h2>Introduktion</h2>
+        <h3>Codestyle</h3>
+            <p>
+                Kodstil handlar om hur man skriver koden, alltså formatering, namngivning och kommentering till exempel. 
+                Det finns olika standarder för kodstilar, vilket gör det lättare för programmerare att förstå varandras kod. 
+                En konsekvent kodstil gör också koden lättare att läsa och underhålla. 
+                För PHP finns <i>PHP FIG standard code style</i> som består av ett antal standarder, där <i>PER Coding Style</i> och <i>PSR-1: Basic Coding Standard</i> handlar om just kodstil. 
+                För detta projekt har php-cs-fixer (csfix) använts som hjälp för att se till att kodstilen håller sig till standarden. 
+            </p>
+
+        <h3>Coverage</h3>
+            <p>
+                Kodtäckning innebär i hur stor utsträckning man har testat sin kod. 
+                Man testar sin kod genom att skapa enhetstester, där klasser i koden testas. 
+                En väl testad kod gör att man enklare kan upptäcka och lösa buggar i koden. 
+                I detta projekt har PHPUnit använts för att testa koden. 
+                I Scrutinizer kan man se hur många procent kodtäckning ens kod har. 
+                En högre procent innebär att större del av koden är täckt. 
+            </p>
+            <img src="{{ asset('img/scrut_coverage.png') }}" alt="">
+
+        <h3>Complexity</h3>
+            <p>
+                Komplexitet handlar om hur komplicerat det är att förstå, ändra och underhålla koden. 
+                En mer komplex kod kan leda till att den blir svårare att testa och debugga. 
+                Man kan mäta kodens komplexitet genom att kolla på mätvärden som <i>cyclomatic complexity</i> och <i>maintainability index</i>. 
+                Ett högre värde på cyclomatic complexity betyder mer komplex kod, och kan vara något att kolla på ifall man ser en klass med högt värde. 
+            </p>
+            <img src="{{ asset('img/metrics_complexity.png') }}" alt="">
+            <p>
+                För maintainability index innebär en högre siffra bättre 'maintainability', ett värde över 85 anses bra medan under 65 anses dåligt. 
+                I bilden nedan betyder alltså grön cirkel över 85, och röd cirkel under 65. Storleken på cirkeln visar <i>cyclomatic complexity</i>, där mindre cirkel är bättre. 
+            </p>
+            <img src="{{ asset('img/metrics_overview.png') }}" alt="">
+
+        <h3>Cohesion</h3>
+            <p>
+                <i>Cohesion</i> har att göra med hur väl metoderna i en klass hänger ihop. 
+                Hög cohesion är bra för att då har klassen ett tydligt och avgränsat ansvar, även kallat <i>single responsibility</i> på engelska. 
+                Låg cohesion innebär att klassen gör många olika grejer, vilket kan göra den svårare att underhålla. 
+                Låga mätvärden innebär hög cohesion och höga mätvärden innebär låg cohesion. Man vill alltså uppnå så låga mätvärden som möjligt. 
+                LCOM innebär <i>Lack of Cohesion of Methods</i>. 
+            </p>
+            <img src="{{ asset('img/metrics_lcom2.png') }}" alt="">
+
+        <h3>Coupling</h3>
+            <p>
+                <i>Coupling</i> handlar om hur starkt kopplade olika klasser är, alltså hur beroende de är av varandra. 
+                Hög coupling betyder att många delar av koden är starkt kopplade, och det kan göra de svårare att ändra utan att påverka andra delar av koden. 
+                Låg coupling betyder att klasserna är mer självständiga, och det gör koden lättare att underhålla. 
+                Mätvärdet Afferent Coupling (AC) mäter hur många andra klasser som är beroende av en viss klarr, och Efferent coupling (EC) hur många klasser den själv är beroende av. 
+            </p>
+            <img src="{{ asset('img/metrics_coupling.png') }}" alt="">
+
+        <h3>CRAP</h3>
+            <p>
+                CRAP är ett mätvärde som kombinerar kodens komplexitet och hur väl testad koden är. 
+                Om en metod har högt CRAP-värde är den alltså komplex och har låg kodtäckning, vilket gör den svårare att underhålla och det kräver mer jobb för att förbättra den. 
+            </p>
+            <img src="{{ asset('img/scrut_crap.png') }}" alt="">
+
+    <h2>Phpmetrics</h2>
+            <p>
+                I rapporten hos PhpMetrics ser jag att en del klasser är röda på bilden med cirklar (se bild ovan under 'Complexity' rubriken). 
+                Detta betyder att de har ett maintainability index under 65, vilket tyder på att de är svåra att underhålla. 
+                En del av cirklarna är även ganska stora, den största har ett cyclomatic complexity värde på 9. 
+                Under fliken 'Complexity and defects' kan man se cyclomatic complexity värdet på den metod med högst värde i klassen (Max method cycl.). 
+                Dessa metoder skulle man kunna förbättra för att få bättre complexity-värde. 
+                Detta relaterar till C nr 3, Complexity. 
+            </p>
+            <img src="{{ asset('img/metrics_complexity2.png') }}" alt="">
+
+            <p>
+                Koden har 7 <i>violations</i>, som syns på bilden nedan. 
+                Två av dessa är varningen 'Probably bugged', med ett värde på 0.35 respektive 0.47 buggar. 
+                Detta kan kopplas till C nr 1, Coverage, och ingen av dessa klasser är testade. 
+                Det kan även kopplar till C nr 3, Complexity, då en mer komplex klass innebär högre risk för buggar. 
+            </p>
+            <img src="{{ asset('img/metrics_violations2.png') }}" alt="">
+
+            <p>
+                Under fliken 'Object oriented metrics' kan man se LCOM värdet. 
+                Av de klasser jag ska undersöka är högsta värdet 2, vilket är helt okej, men kan tyda på att klassen har olika ansvarsområden. 
+                Klasser med fler än ett ansvarsområde vill man hellre bryta upp i fler klasser, då klassen blir lättare att underhålla då. 
+                Det kan kopplas till C nr 4, Cohesion.
+            </p>
+            <img src="{{ asset('img/metrics_lcom3.png') }}" alt="">
+
+    <h2>Scrutinizer</h2>
+            <a href="https://scrutinizer-ci.com/g/gitpau4/report-mvc/?branch=main"><img src="https://scrutinizer-ci.com/g/gitpau4/report-mvc/badges/quality-score.png?b=main" alt=""></a><br>
+            <a href="https://scrutinizer-ci.com/g/gitpau4/report-mvc/?branch=main"><img src="https://scrutinizer-ci.com/g/gitpau4/report-mvc/badges/coverage.png?b=main" alt=""></a><br>
+            <a href="https://scrutinizer-ci.com/g/gitpau4/report-mvc/?branch=main"><img src="https://scrutinizer-ci.com/g/gitpau4/report-mvc/badges/build.png?b=main" alt=""></a>
+            <p>
+                När man kollar på översikten i Scrutinizer ser man fyra badges, <i>scrutinizer, coverage, build och code intelligence.</i> 
+                Coverage badgen har endast 18%, vilket betyder att 18% av koden i src är testad. 
+                Om man kollar närmare på vilka klasser som är testade och inte ser man att Card-klasserna har 100% kodtäckning. 
+                De andra klasserna har näst intill ingen testning. 
+                Detta kopplas till C nr 2, Coverage. 
+            </p>
+            <img src="{{ asset('img/scrut_badges.png') }}" alt="">
+            <img src="{{ asset('img/scrut_coverage2.png') }}" alt="">
+
+            <p>
+                I scrutinizer kan man se CRAP-värdet för varje metod. 
+                De högsta värdena som uppmäts av mina metoder är 20, 12 och 7. 
+                Detta tyder på att dessa metoder inte är testade och/eller är komplexa. 
+                Under 'Hot Spots'-fliken har scrutinizer färglagt CRAP-värdena, och där har värdet 20 en gul färg och 12 en ljusgrön färg, medan 7 och 6 har en mörkgrön färg. 
+                Det säger mig att värdet 20 är måttligt bra medan 12 är helt okej, men kan bli bättre. 
+                Detta kopplas såklart till C nr 6 CRAP, och även C nr 3, Complexity och C nr 2, Coverage. 
+            </p>
+            <img src="{{ asset('img/scrut_hotspot2.png') }}" alt="">
+
+            <p>
+                Under 'Hot Spots'-fliken ser man vad varje klass och metod har för rating, A-F. 
+                Denna rating kombinerar värden så som Complexity, Coupling och Cohesion. 
+                Detta kan även kallas för 'Code smell', alltså en typ av varning om att koden har problem, som kan bli värre när man utökar koden. 
+                Det är alltså något man vill ta itu med tidigare hellre än senare. 
+                Mina klasser och metoder har väldigt bra ratings. 
+                Däremot sticker en metod ut som har rating B, istället för A som resterande metoder. 
+                Trots att B fortfarande är en bra rating, kan det vara värt att se över varför den får B och inte A. 
+            </p>
+            <img src="{{ asset('img/scrut_hotspot1.png') }}" alt="">
+
+    <h2>Förbättringar</h2>
+            <p>
+                Öka kodtäckning, minska komplexiteten i metoder, gör så alla rateas A i scrut (de två är typ samma), bug?
+            </p>
+            <p>
+                Öka kodtäckning. 
+                Detta kommer påverka: 
+                Badge i scrut. 
+            </p>
+            <p>
+                Minska komplexitet i metoder. Gör så att alla metoder rateas A i scrut. 
+                Detta kommer påverka: 
+                Scrutinizer rating till A på getPoints. 
+                Minska complexity värdet i scrut på den och andra metoder.
+                Max method cycl i metrics.
+                WMC i metrics. 
+            </p>
+            <p>
+                Class violations, probably bugged. 
+                Detta kommer påverka: 
+                Minska på värdet 0.35, eller försvinna.
+            </p>
+    <h2>Diskussion</h2>
+    <p>
+        Nackdel att koden kan bli mer komplicerad om man hela tiden försöker uppnå perfekta mätvärden, ibland bör man kanske överväga vad som faktsikt blir bäst.
+    </p>
+    <p>
+        Det kan vara bra att lära sig förstå vad dessa verktyg menar och tycker är bra kod, så man kan lära sig inför nästa gång. 
+    </p>
+{% endblock %}
