@@ -23,4 +23,46 @@ class CardGameHelper
         $session->set('deck', $deck);
         return $deck;
     }
+
+    public function formatJsonCards(
+        array $cards
+    ): array {
+        $data = [];
+
+        foreach ($cards as $card) {
+            $data[] = [
+                'value' => $card->getValue(),
+                'suit' => $card->getSuit()
+            ];
+        }
+
+        return $data;
+    }
+
+    public function getGameState(
+        SessionInterface $session
+    ): array {
+        $data = [];
+
+        $game = $session->get('game');
+        if (!$game) {
+            $data['notice'] = ['Inget pågående spel'];
+            return $data;
+        }
+
+        $player = $game->getPlayer();
+        $bank = $game->getBank();
+
+        $data['player'] = [
+            'hand' => $player->getHand()->getValues(),
+            'points' => $player->getPoints(),
+        ];
+
+        $data['bank'] = [
+            'hand' => $bank->getHand()->getValues(),
+            'points' => $bank->getPoints(),
+        ];
+
+        return $data;
+    }
 }

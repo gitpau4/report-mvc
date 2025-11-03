@@ -22,6 +22,16 @@ class CardGameControllerJson extends AbstractController
         $this->helper = $helper;
     }
 
+    private function jsonResponse(
+        array $data
+    ): JsonResponse {
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
     #[Route("/api/deck", name: "api_deck", methods: ['GET'])]
     public function apiDeck(
         SessionInterface $session
@@ -29,20 +39,9 @@ class CardGameControllerJson extends AbstractController
         $deck = $this->helper->getSessionDeck($session);
 
         $cards = $deck->getOriginalDeck();
-        $data = [];
+        $data = $this->helper->formatJsonCards($cards);
 
-        foreach ($cards as $card) {
-            $data[] = [
-                'value' => $card->getValue(),
-                'suit' => $card->getSuit()
-            ];
-        }
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        return $this->jsonResponse($data);
     }
 
     #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ['POST'])]
@@ -58,22 +57,11 @@ class CardGameControllerJson extends AbstractController
         $deck->shuffle();
 
         $cards = $deck->getDeck();
-        $data = [];
-
-        foreach ($cards as $card) {
-            $data[] = [
-                'value' => $card->getValue(),
-                'suit' => $card->getSuit()
-            ];
-        }
+        $data = $this->helper->formatJsonCards($cards);
 
         $session->set('deck', $deck);
 
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        return $this->jsonResponse($data);
     }
 
     #[Route("/api/deck/draw", name: "api_deck_draw", methods: ['POST'])]
@@ -100,11 +88,7 @@ class CardGameControllerJson extends AbstractController
 
         $data['cardsLeft'] = $deck->getNumberOfCards();
 
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        return $this->jsonResponse($data);
     }
 
     #[Route("/api/deck/draw/{num<\d+>}", name: "api_deck_draw_num", methods: ['POST'])]
@@ -133,11 +117,7 @@ class CardGameControllerJson extends AbstractController
 
         $data['cardsLeft'] = $deck->getNumberOfCards();
 
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        return $this->jsonResponse($data);
     }
 
     #[Route("/api/game", name: "api_game", methods: ['GET'])]
@@ -145,30 +125,8 @@ class CardGameControllerJson extends AbstractController
         SessionInterface $session
     ): Response {
 
-        $data = [];
+        $data = $this->helper->getGameState($session);
 
-        $game = $session->get('game');
-        if (!$game) {
-            $data['notice'] = ['Inget pågående spel'];
-        }
-
-        $player = $game->getPlayer();
-        $bank = $game->getBank();
-
-        $data['player'] = [
-            'hand' => $player->getHand()->getValues(),
-            'points' => $player->getPoints(),
-        ];
-
-        $data['bank'] = [
-            'hand' => $bank->getHand()->getValues(),
-            'points' => $bank->getPoints(),
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        return $this->jsonResponse($data);
     }
 }
