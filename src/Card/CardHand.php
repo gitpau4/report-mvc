@@ -69,7 +69,7 @@ class CardHand
 
         foreach ($this->getValues() as $value) {
             $valToAdd = $cardValues[$value] ?? intval($value);
-            
+
             if ($value === 'A' && $points > 7) {
                 $valToAdd = 1;
             }

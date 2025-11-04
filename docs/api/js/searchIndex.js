@@ -331,6 +331,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-CardGameControllerJson.html#method___construct"
         },                {
+            "fqsen": "\\App\\Controller\\CardGameControllerJson\u003A\u003AjsonResponse\u0028\u0029",
+            "name": "jsonResponse",
+            "summary": "",
+            "url": "classes/App-Controller-CardGameControllerJson.html#method_jsonResponse"
+        },                {
             "fqsen": "\\App\\Controller\\CardGameControllerJson\u003A\u003AapiDeck\u0028\u0029",
             "name": "apiDeck",
             "summary": "",
@@ -470,6 +475,11 @@ Search.appendIndex(
             "name": "apiJsonRoutes",
             "summary": "",
             "url": "classes/App-Controller-HomeControllerTwig.html#method_apiJsonRoutes"
+        },                {
+            "fqsen": "\\App\\Controller\\HomeControllerTwig\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-HomeControllerTwig.html#method_metrics"
         },                {
             "fqsen": "\\App\\Controller\\LibraryController",
             "name": "LibraryController",
@@ -835,6 +845,16 @@ Search.appendIndex(
             "name": "getSessionDeck",
             "summary": "",
             "url": "classes/App-Helper-CardGameHelper.html#method_getSessionDeck"
+        },                {
+            "fqsen": "\\App\\Helper\\CardGameHelper\u003A\u003AformatJsonCards\u0028\u0029",
+            "name": "formatJsonCards",
+            "summary": "",
+            "url": "classes/App-Helper-CardGameHelper.html#method_formatJsonCards"
+        },                {
+            "fqsen": "\\App\\Helper\\CardGameHelper\u003A\u003AgetGameState\u0028\u0029",
+            "name": "getGameState",
+            "summary": "",
+            "url": "classes/App-Helper-CardGameHelper.html#method_getGameState"
         },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",

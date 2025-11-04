@@ -15,7 +15,7 @@ class ProductTest extends TestCase
         $product->setName("Anna Svensson");
         $this->assertEquals("Anna Svensson", $product->getName());
     }
-    
+
     public function testSetAndGetValue(): void
     {
         $product = new Product();

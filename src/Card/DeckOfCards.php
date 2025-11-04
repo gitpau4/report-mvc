@@ -95,7 +95,7 @@ class DeckOfCards
         $drawedCards = [];
         for ($i = 0; $i < $number; $i++) {
             $card = array_pop($this->deck);
-            
+
             if ($card !== null) {
                 $drawedCards[] = $card;
             }
