@@ -29,8 +29,8 @@
             <p>
                 Komplexitet handlar om hur komplicerat det är att förstå, ändra och underhålla koden. 
                 En mer komplex kod kan leda till att den blir svårare att testa och debugga. 
-                Man kan mäta kodens komplexitet genom att kolla på mätvärden som <i>cyclomatic complexity</i> och <i>maintainability index</i>. 
-                Ett högre värde på cyclomatic complexity betyder mer komplex kod, och kan vara något att kolla på ifall man ser en klass med högt värde. 
+                Man kan mäta kodens komplexitet genom att kolla på mätvärden som <i>WMC (Weighted Methods per Class)</i>, <i>cyclomatic complexity</i> och <i>maintainability index</i>. 
+                Ett högre värde på WMC och cyclomatic complexity betyder mer komplex kod, och kan vara något att kolla på ifall man ser en klass med högt värde. 
             </p>
             <img src="{{ asset('img/metrics_complexity.png') }}" alt="">
             <p>
@@ -66,104 +66,132 @@
             <img src="{{ asset('img/scrut_crap.png') }}" alt="">
 
     <h2>Phpmetrics</h2>
-            <p>
-                I rapporten hos PhpMetrics ser jag att en del klasser är röda på bilden med cirklar (se bild ovan under 'Complexity' rubriken). 
-                Detta betyder att de har ett maintainability index under 65, vilket tyder på att de är svåra att underhålla. 
-                En del av cirklarna är även ganska stora, den största har ett cyclomatic complexity värde på 9. 
-                Under fliken 'Complexity and defects' kan man se cyclomatic complexity värdet på den metod med högst värde i klassen (Max method cycl.). 
-                Dessa metoder skulle man kunna förbättra för att få bättre complexity-värde. 
-                Detta relaterar till C nr 3, Complexity. 
-            </p>
-            <img src="{{ asset('img/metrics_complexity2.png') }}" alt="">
+        <p>
+            I rapporten hos PhpMetrics ser jag att en del klasser är röda på bilden med cirklar (se bild ovan under 'Complexity' rubriken). 
+            Detta betyder att de har ett maintainability index under 65, vilket tyder på att de är svåra att underhålla. 
+            En del av cirklarna är även ganska stora, den största har ett cyclomatic complexity värde på 9. 
+            Under fliken 'Complexity and defects' kan man se cyclomatic complexity värdet på den metod med högst värde i klassen (Max method cycl.). 
+            Dessa metoder skulle man kunna förbättra för att få bättre complexity-värde. 
+            Detta relaterar till C nr 3, Complexity. 
+        </p>
+        <img src="{{ asset('img/metrics_complexity2.png') }}" alt="">
 
-            <p>
-                Koden har 7 <i>violations</i>, som syns på bilden nedan. 
-                Två av dessa är varningen 'Probably bugged', med ett värde på 0.35 respektive 0.47 buggar. 
-                Detta kan kopplas till C nr 1, Coverage, och ingen av dessa klasser är testade. 
-                Det kan även kopplar till C nr 3, Complexity, då en mer komplex klass innebär högre risk för buggar. 
-            </p>
-            <img src="{{ asset('img/metrics_violations2.png') }}" alt="">
+        <p>
+            Koden har 7 <i>violations</i>, se två av de på bilden nedan. 
+            Två av dessa är varningen 'Probably bugged', med ett värde på 0.35 respektive 0.47 buggar. 
+            Detta kan kopplas till C nr 1, Coverage, och ingen av dessa klasser är testade. 
+            Det kan även kopplar till C nr 3, Complexity, då en mer komplex klass innebär högre risk för buggar. 
+        </p>
+        <img src="{{ asset('img/metrics_violations2.png') }}" alt="">
 
-            <p>
-                Under fliken 'Object oriented metrics' kan man se LCOM värdet. 
-                Av de klasser jag ska undersöka är högsta värdet 2, vilket är helt okej, men kan tyda på att klassen har olika ansvarsområden. 
-                Klasser med fler än ett ansvarsområde vill man hellre bryta upp i fler klasser, då klassen blir lättare att underhålla då. 
-                Det kan kopplas till C nr 4, Cohesion.
-            </p>
-            <img src="{{ asset('img/metrics_lcom3.png') }}" alt="">
+        <p>
+            Under fliken 'Object oriented metrics' kan man se LCOM värdet. 
+            Av de klasser jag ska undersöka är högsta värdet 2, vilket är helt okej, men kan tyda på att klassen har olika ansvarsområden. 
+            Klasser med fler än ett ansvarsområde vill man hellre bryta upp i fler klasser, då klassen blir lättare att underhålla då. 
+            Det kan kopplas till C nr 4, Cohesion.
+        </p>
+        <img src="{{ asset('img/metrics_lcom3.png') }}" alt="">
 
     <h2>Scrutinizer</h2>
-            <a href="https://scrutinizer-ci.com/g/gitpau4/report-mvc/?branch=main"><img src="https://scrutinizer-ci.com/g/gitpau4/report-mvc/badges/quality-score.png?b=main" alt=""></a><br>
-            <a href="https://scrutinizer-ci.com/g/gitpau4/report-mvc/?branch=main"><img src="https://scrutinizer-ci.com/g/gitpau4/report-mvc/badges/coverage.png?b=main" alt=""></a><br>
-            <a href="https://scrutinizer-ci.com/g/gitpau4/report-mvc/?branch=main"><img src="https://scrutinizer-ci.com/g/gitpau4/report-mvc/badges/build.png?b=main" alt=""></a>
-            <p>
-                När man kollar på översikten i Scrutinizer ser man fyra badges, <i>scrutinizer, coverage, build och code intelligence.</i> 
-                Coverage badgen har endast 18%, vilket betyder att 18% av koden i src är testad. 
-                Om man kollar närmare på vilka klasser som är testade och inte ser man att Card-klasserna har 100% kodtäckning. 
-                De andra klasserna har näst intill ingen testning. 
-                Detta kopplas till C nr 2, Coverage. 
-            </p>
-            <img src="{{ asset('img/scrut_badges.png') }}" alt="">
-            <img src="{{ asset('img/scrut_coverage2.png') }}" alt="">
+        <a href="https://scrutinizer-ci.com/g/gitpau4/report-mvc/?branch=main"><img src="https://scrutinizer-ci.com/g/gitpau4/report-mvc/badges/quality-score.png?b=main" alt=""></a><br>
+        <a href="https://scrutinizer-ci.com/g/gitpau4/report-mvc/?branch=main"><img src="https://scrutinizer-ci.com/g/gitpau4/report-mvc/badges/coverage.png?b=main" alt=""></a><br>
+        <a href="https://scrutinizer-ci.com/g/gitpau4/report-mvc/?branch=main"><img src="https://scrutinizer-ci.com/g/gitpau4/report-mvc/badges/build.png?b=main" alt=""></a>
+        <p>
+            När man kollar på översikten i Scrutinizer ser man fyra badges, <i>scrutinizer, coverage, build och code intelligence.</i> 
+            Coverage badgen har endast 18%, vilket betyder att 18% av koden i src är testad. 
+            Om man kollar närmare på vilka klasser som är testade och inte ser man att Card-klasserna har 100% kodtäckning. 
+            De andra klasserna har näst intill ingen testning. 
+            Detta kopplas till C nr 2, Coverage. 
+        </p>
+        <img src="{{ asset('img/scrut_badges.png') }}" alt="">
+        <img src="{{ asset('img/scrut_coverage2.png') }}" alt="">
 
-            <p>
-                I scrutinizer kan man se CRAP-värdet för varje metod. 
-                De högsta värdena som uppmäts av mina metoder är 20, 12 och 7. 
-                Detta tyder på att dessa metoder inte är testade och/eller är komplexa. 
-                Under 'Hot Spots'-fliken har scrutinizer färglagt CRAP-värdena, och där har värdet 20 en gul färg och 12 en ljusgrön färg, medan 7 och 6 har en mörkgrön färg. 
-                Det säger mig att värdet 20 är måttligt bra medan 12 är helt okej, men kan bli bättre. 
-                Detta kopplas såklart till C nr 6 CRAP, och även C nr 3, Complexity och C nr 2, Coverage. 
-            </p>
-            <img src="{{ asset('img/scrut_hotspot2.png') }}" alt="">
+        <p>
+            I scrutinizer kan man se CRAP-värdet för varje metod. 
+            De högsta värdena som uppmäts av mina metoder är 20, 12 och 7. 
+            Detta tyder på att dessa metoder inte är testade och/eller är komplexa. 
+            Under 'Hot Spots'-fliken har scrutinizer färglagt CRAP-värdena, och där har värdet 20 en gul färg och 12 en ljusgrön färg, medan 7 och 6 har en mörkgrön färg. 
+            Det säger mig att värdet 20 är måttligt bra medan 12 är helt okej, men kan bli bättre. 
+            Detta kopplas såklart till C nr 6 CRAP, och även C nr 3, Complexity och C nr 2, Coverage. 
+        </p>
+        <img src="{{ asset('img/scrut_hotspot2.png') }}" alt="">
 
-            <p>
-                Under 'Hot Spots'-fliken ser man vad varje klass och metod har för rating, A-F. 
-                Denna rating kombinerar värden så som Complexity, Coupling och Cohesion. 
-                Detta kan även kallas för 'Code smell', alltså en typ av varning om att koden har problem, som kan bli värre när man utökar koden. 
-                Det är alltså något man vill ta itu med tidigare hellre än senare. 
-                Mina klasser och metoder har väldigt bra ratings. 
-                Däremot sticker en metod ut som har rating B, istället för A som resterande metoder. 
-                Trots att B fortfarande är en bra rating, kan det vara värt att se över varför den får B och inte A. 
-            </p>
-            <img src="{{ asset('img/scrut_hotspot1.png') }}" alt="">
+        <p>
+            Under 'Hot Spots'-fliken ser man vad varje klass och metod har för rating (betyg), A-F. 
+            Denna rating kombinerar värden så som Complexity, Coupling och Cohesion. 
+            Detta kan även kallas för 'Code smell', alltså en typ av varning om att koden har problem, som kan bli värre när man utökar koden. 
+            Det är alltså något man vill ta itu med tidigare hellre än senare. 
+            Mina klasser och metoder har väldigt bra betyg. 
+            Däremot sticker en metod ut som har betyg B, istället för A som resterande metoder. 
+            Trots att B fortfarande är ett bra betyg, kan det vara värt att se över varför den får B och inte A. 
+        </p>
+        <img src="{{ asset('img/scrut_hotspot1.png') }}" alt="">
 
     <h2>Förbättringar</h2>
+        <h3>Innan</h3>
             <p>
-                Öka kodtäckning, minska komplexiteten i metoder, gör så alla rateas A i scrut (de två är typ samma), bug?
+                Den första förbättringen jag ska göra är att öka kodtäckningen. 
+                Jag kommer lägga till enhetstester för klasserna Book och Product i Entity mappen. 
+                Detta kommer påverka badgen <i>coverage</i> i scrutinizer. 
+                Det kommer alltså bli en högre procentsats för <i>Code Coverage</i>. 
             </p>
             <p>
-                Öka kodtäckning. 
-                Detta kommer påverka: 
-                Badge i scrut. 
+                Den andra förbättringen jag ska göra är att göra så att alla metoder har betyget A i Scrutinizer. 
+                Det betyder att jag måste minska komplexiteten i getPoints-metoden, som just nu har betyg B. 
+                Detta kommer alltså minska dess Complexity index och höja betyget. 
+                Jag tror även att det kommer påverka klassens (CardHand) WMC och cyclomatic complexity mätvärde i PhpMetrics. 
             </p>
             <p>
-                Minska komplexitet i metoder. Gör så att alla metoder rateas A i scrut. 
-                Detta kommer påverka: 
-                Scrutinizer rating till A på getPoints. 
-                Minska complexity värdet i scrut på den och andra metoder.
-                Max method cycl i metrics.
-                WMC i metrics. 
+                Den tredje förbättringen jag ska göra är att minska antalet teoretiska buggar i CardGameControllerJson klassen. 
+                Den har just nu en violation som säger att den har 0.35 teoretiska buggar. 
+                Jag ska försöka få bort denna violation helt, eller minska värdet 0.35 till något mycket lägre. 
             </p>
+
+        <h3>Efter</h3>
             <p>
-                Class violations, probably bugged. 
-                Detta kommer påverka: 
-                Minska på värdet 0.35, eller försvinna.
+                Efter att ha lagt till fler enhetstester ser jag att jag fått högre kodtäckning i Scrutinizer, från 18% till 22%. 
+                Varför det fortfarande är ganska lågt är bland annat för att controllers utgör en stor del av koden, och dessa har jag inte testat. 
             </p>
+            <img src="{{ asset('img/imp_scrut_coverage.png') }}" alt="">
+            <img src="{{ asset('img/imp_scrut_coverage2.png') }}" alt="">
+
             <p>
-                Efter:
+                Jag förbättrade getPoints-metoden genom att minska antalet if/elseif-rader. 
+                Detta gav en tydlig förbättring, betyget gick från B till A och Complexity indexet gick från 7 till 4 i Scrutinizer. 
+                Scrutinizer badgen har ökat från 9.96 till 10. 
+                I PhpMetrics ser jag att WMC värdet gick från 13 till 11 och Class cyclomatic index gick från 9 till 7 för klassen. 
+                I Scrutinizer gick Complexity indexet för hela klassen från 14 till 11. 
+                Jag förbättrade även en annan metod (drawNumberCards) i en annan klass (DeckOfCards), men där ser jag ingen förändring i mätvärdena. 
+                Där gjorde jag dock inte en lika stor förändring och värdet var från början inte så högt, metoden hade Complexity index 4 i Scrutinizer. 
             </p>
+            <img src="{{ asset('img/scrut_improve.png') }}" alt="">
+
             <p>
-                CardGameControllerJson: Försvann från violations, fick mycket bättre cyclomatic complexity, men däremot högre maintainability index (pga helper tror jag).
+                Jag gjorde en rad förbättringar i CardGameControllerJson klassen. 
+                Främst minskade jag på upprepningar genom att skapa hjälpfunktioner. 
+                En metod hade för mycket logisk kod, som ju egentligen ska undvikas i en Controller, så detta gjorde jag även till en hjälpfunktion. 
+                Detta gjorde att violationen i PhpMetrics försvann helt, alltså gick koden från att ha 0.35 teoretiska buggar till 0. 
+                Jag ser även att WMC värdet gått från 11 till 9, Cyclomatic complexity från 7 till 4 och maintainability index från 58.87 till 65.05. 
             </p>
-            <p>
-                CardHand: WMC och max method cycl.
-                DeckofCards?
-            </p>
+            <img src="{{ asset('img/imp_controller.png') }}" alt="">
+
     <h2>Diskussion</h2>
-    <p>
-        Nackdel att koden kan bli mer komplicerad om man hela tiden försöker uppnå perfekta mätvärden, ibland bör man kanske överväga vad som faktsikt blir bäst.
-    </p>
-    <p>
-        Det kan vara bra att lära sig förstå vad dessa verktyg menar och tycker är bra kod, så man kan lära sig inför nästa gång. 
-    </p>
+        <p>
+            Jag tycker att man kan jobba med kodkvalitet på detta sätt, och jag tror att med tiden lär man sig bättre att få till bra kodkvalitet från början. 
+            Verktygen hjälper en att se vilken del av koden som kanske är för komplex eller potentiella buggar. 
+            Det gör att man kan förbättra koden tidigt i processen, innan det blir ett större problem. 
+        </p>
+        <p>
+            En nackdel kan vara att man fokuserar för mycket på att uppnå perfekta mätvärden istället för hur praktisk koden faktsikt är. 
+            Ofta innebär bättre mätvärden också bättre kod, men så är inte alltid fallet anser jag. 
+            Om man hela tiden försöker rätta sig efter verktyget, kan koden till och med kännas mer komplicerad eller svårare att förstå. 
+            Man bör överväga från fall till fall om man ska helt och hållet lyssna på verktygen eller inte. 
+        </p>
+        <p>
+            Andra sätt att jobba med "clean code" är att lära sig och följa en viss kodstandard. 
+            Som jag skrev ovan tror jag också man lär sig av erfarenhet vad som är bra kod, speciellt om man jobbat med dessa typer av verktyg. 
+            Då kanske inte behovet av att använda de blir lika stort med tiden. 
+            Att arbeta mycket med testning under utvecklingsprocessen kan också vara ett bra sätt att jobba med "clean code", för då kan man 
+            se om en viss del av koden är svårtestad vilket då tyder på att den är för komplicerad. 
+        </p>
 {% endblock %}
