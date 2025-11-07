@@ -1,0 +1,21 @@
+body {
+    margin: 0 auto;
+    max-width: 1000px;
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.proj-main {
+    padding: 10px 50px;
+    background-color: var(--blue);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+img {
+    max-width: 100%;
+}
+
+/* .home-img {
+    width: 350px;
+    margin: 10px;
+} */
