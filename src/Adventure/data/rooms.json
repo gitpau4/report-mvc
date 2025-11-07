@@ -1,0 +1,70 @@
+[
+    {
+        "id": 1,
+        "description": "This is room 1",
+        "exits": {
+            "west": null,
+            "east": 2,
+            "south": null,
+            "north": 3
+        },
+        "items": [],
+        "action": null
+    },
+    {
+        "id": 2,
+        "description": "This is room 2",
+        "exits": {
+            "west": 1,
+            "east": null,
+            "south": null,
+            "north": 4
+        },
+        "items": [{
+            "name": "amulet",
+            "description": "magic amulet",
+            "canTake": true
+        }],
+        "action": null
+    },
+    {
+        "id": 3,
+        "description": "This is room 3",
+        "exits": {
+            "west": null,
+            "east": 4,
+            "south": 1,
+            "north": 5
+        },
+        "items": [],
+        "action": null
+    },
+    {
+        "id": 4,
+        "description": "This is room 4",
+        "exits": {
+            "west": 3,
+            "east": null,
+            "south": 2,
+            "north": null
+        },
+        "items": [],
+        "action": "treasure"
+    },
+    {
+        "id": 5,
+        "description": "This is room 5",
+        "exits": {
+            "west": null,
+            "east": null,
+            "south": 3,
+            "north": null
+        },
+        "items": [{
+            "name": "key",
+            "description": "key to open treasure chest",
+            "canTake": false
+        }],
+        "action": "armor"
+    }
+]
