@@ -1,0 +1,86 @@
+{% extends "proj/proj_base.html.twig" %}
+
+{% block title %}Game ongoing{% endblock %}
+
+{% block body %}
+
+{# bild #}
+
+{# rumsbeskrivning #}
+{{ currentRoom.getDescription() }}
+<br>
+
+{# inventory #}
+{{ inventory }}
+
+{# knappar #}
+<div class="adventure-button-container">
+
+    {% if not isGameOver %}
+        {# move #}
+        {% for direction in ['west', 'east', 'south', 'north'] %}
+            <form method="post" action="{{ path('adventure_move') }}">
+                <input type="submit" name="move" value="{{ direction }}" class="adventure-button">
+            </form>
+        {% endfor %}
+
+        {# pick item #}
+        {% for item in currentRoom.getItems() %}
+            <form method="post" action="{{ path('adventure_pick') }}">
+                <input type="submit" name="pick" value="Pick {{ item.getName }}" class="adventure-button">
+            </form>
+        {% endfor %}
+
+        {# do action #}
+        {% if currentRoom.getAction() is not null %}
+            <form method="post" action="{{ path('adventure_action') }}">
+                <input type="submit" name="action" value="Interact with {{ currentRoom.getAction }}" class="adventure-button">
+            </form>
+        {% endif %}
+    {% else %}
+    {# game over #}
+    <form method="post" action="{{ path('adventure_post') }}">
+        <input type="submit" name="again" value="Play again" class="button">
+    </form>
+    {% endif %}
+
+    {# {% if not isGameOver %}
+    <form method="post" action="{{ path('game_draw') }}">
+        <input type="submit" name="draw" value="Dra ett kort" class="button">
+    </form>
+
+    <form method="post" action="{{ path('game_stop') }}">
+        <input type="submit" name="stop" value="Stanna" class="button">
+    </form>
+    {% endif %}
+
+    <form method="post" action="{{ path('game_post') }}">
+        <input type="submit" name="again" value="Starta igen" class="button">
+    </form> #}
+</div>
+
+{{ include('flash.html.twig') }}
+
+{# <h2>Spelare poäng: {{ playerPoints }}</h2>
+
+<h3>Spelare kort:</h3>
+<div class="card-container">
+{% for card in playerHand %}
+    <div class="single-card {{ card.getSuit() }}">
+        {{ card.getAsString() }}
+    </div>
+{% endfor %}
+</div>
+
+<h2>Bankens poäng: {{ bankPoints }}</h2>
+
+<h3>Bankens kort:</h3>
+<div class="card-container">
+{% for card in bankHand %}
+    <div class="single-card {{ card.getSuit() }}">
+        {{ card.getAsString() }}
+    </div>
+{% endfor %}
+</div> #}
+
+{% endblock %}

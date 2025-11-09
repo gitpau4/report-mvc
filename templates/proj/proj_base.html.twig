@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Adventure Game{% endblock %}</title>
         <link rel="icon" href="{{ asset('img/favicon_sword.png') }}">
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('proj') }}
         {% endblock %}
@@ -13,11 +14,23 @@
         {% endblock %}
     </head>
     <body>
-        <header class="site-header">
-            <span class="site-title">Adventure</span>
+        <header class="proj-header">
+            <span class="proj-title">Medieval Adventure Game</span>
         </header>
-        <main>
+
+        <nav class="proj-nav">
+            <ul>
+                <li><a href="{{ path('adventure') }}">Home</a></li>
+                <li><a href="{{ path('proj_about') }}">About</a></li>
+            </ul>
+        </nav>
+
+        <main class="proj-main">
             {% block body %}{% endblock %}
         </main>
+
+        <footer>
+            <p>&#169; Adventure Game</p>
+        </footer>
     </body>
 </html>
