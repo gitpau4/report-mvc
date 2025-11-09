@@ -53,11 +53,14 @@ class Room
     {
         foreach ($this->items as $key => $item) {
             if ($item->getName() === $itemName) {
-                array_splice($this->items, $key, 1);
+                unset($this->items[$key]);
                 break;
             }
         }
     }
 
-    // hasItem ?
+    public function actionDone(): void
+    {
+        $this->action = null;
+    }
 }

@@ -11,19 +11,19 @@ use App\Adventure\Player;
  *
  * @autor Paula Frölander, pafo24
  */
-class GameLogic
+class AdventureLogic
 {
     private array $rooms = [];
     private Player $player;
-    // ska denna va id eller bättre med Room objekt ??????????????????????
-    // private int $currentRoomId;
-    private int $currentRoom;
+    private Room $currentRoom;
+    private bool $isGameOver;
 
     public function __construct()
     {
         $this->initRooms();
         $this->player = new Player();
         $this->currentRoom = $this->rooms[1];
+        $this->isGameOver = false;
     }
 
     public function initRooms(): void
@@ -47,27 +47,53 @@ class GameLogic
         }
     }
 
-    // bör denna va private istället ????????????????
-    // public function getCurrentRoom(): Room
-    // {
-    //     return $this->rooms[$this->currentRoomId];
-    // }
-
-    public function move(string $direction): void
+    public function getRooms(): array
     {
-        // $currentRoom = $this->getCurrentRoom();
+        return $this->rooms;
+    }
+
+    public function getCurrentRoom(): Room
+    {
+        return $this->currentRoom;
+    }
+
+    public function getIsGameOver(): bool
+    {
+        return $this->isGameOver;
+    }
+
+    public function getInventoryAsString(): string
+    {
+        $inventory = $this->player->getInventory();
+
+        if (empty($inventory)) {
+            return "Your inventory is empty.";
+        }
+
+        $itemNames = [];
+        foreach ($inventory as $item) {
+            $itemNames[] = $item->getName();
+        }
+
+        return "You are carrying: " . implode(", ", $itemNames);
+    }
+
+    public function move(string $direction): string
+    {
         $exits = $this->currentRoom->getExits();
 
         if (isset($exits[$direction])) {
             $nextRoomId = $exits[$direction];
             $this->currentRoom = $this->rooms[$nextRoomId];
+
+            return "You go " . $direction . ".";
         }
-        // else man kan inte gå hit
+        
+        return "You can't go that way.";
     }
 
-    public function pickItem(string $itemName): void
+    public function pickItem(string $itemName): string
     {
-        // $currentRoom = $this->getCurrentRoom();
         $items = $this->currentRoom->getItems();
 
         // om rummet har item, lägg i spelares inventory
@@ -77,10 +103,14 @@ class GameLogic
 
                 // ta bort föremålet från rummet
                 $this->currentRoom->removeItem($itemName);
+
+                return "You pick up the " . $itemName . ".";
             }
-            // else man får inte plocka
+            
+            return "You can't reach the " . $itemName . ".";
         }
-        // else rummet har inget att plocka
+        
+        return "Nothing to pick.";
     }
 
     public function interact(string $action): string
@@ -92,29 +122,30 @@ class GameLogic
             // om spelare har amulet, då gå armor sönder och canTake key blir true
             if ($this->player->hasItem("amulet")) {
                 $items["key"]->makeItemTakeable();
+                $this->currentRoom->actionDone();
 
-                $this->player->removeItem("amulet");
-
-                return "The armor falls to the ground, clearing the path to the key.";
+                return "Your magic amulet starts to glow brighter and the cursed armor falls to the ground. 
+                        The key is now within reach.";
             }
 
-            // här kan det istället vara game over om man rör rustningen utan amulett
-            return "The armor guards the key.";
+            $this->isGameOver = true;
+            return "The cursed armors eyeholes light up with an eerie blue glow. 
+                    You don't have any protection, the armor strikes you down. 
+                    Game Over!";
         }
 
         if ($action === "treasure") {
             if ($this->player->hasItem("key")) {
                 $this->player->removeItem("key");
-                return "You open the treasure chest with the key and find lots of money!! You win!";
+                $this->currentRoom->actionDone();
+
+                $this->isGameOver = true;
+                return "The key fits perfectly. 
+                        The chest opens with a creak and inside you find piles of gold.
+                        You Win!";
             }
 
             return "The treasure chest is locked.";
         }
     }
-
-    // move
-    // useItem eller interact
-    // pickItem, addar till player samt tar bort från rum
-    // game over
-    // se sitt inventory
 }

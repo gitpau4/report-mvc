@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "description": "This is room 1",
+        "description": "You awaken in a cold stone chamber lit by a flickering torch. The air is damp and silent. Passages lead east and north.",
         "exits": {
             "west": null,
             "east": 2,
@@ -13,7 +13,7 @@
     },
     {
         "id": 2,
-        "description": "This is room 2",
+        "description": "You enter a storage rooms with dusty shelves. A faint glow catches your eye, an amulet lies abandoned here. Exits are to the west and north.",
         "exits": {
             "west": 1,
             "east": null,
@@ -29,7 +29,7 @@
     },
     {
         "id": 3,
-        "description": "This is room 3",
+        "description": "You enter a narrow corridor. The walls are covered with eerie portraits. Paths lead east, south, and north.",
         "exits": {
             "west": null,
             "east": 4,
@@ -41,7 +41,7 @@
     },
     {
         "id": 4,
-        "description": "This is room 4",
+        "description": "You step into a circular chamber. A heavy treasure chest rests in the center, sealed with an old iron lock. Exits are west and south.",
         "exits": {
             "west": 3,
             "east": null,
@@ -53,7 +53,7 @@
     },
     {
         "id": 5,
-        "description": "This is room 5",
+        "description": "As you enter the room you see a cursed, hollow armor. Behind it, on a pedestal, rests an iron key. The only way out is to the south.",
         "exits": {
             "west": null,
             "east": null,
