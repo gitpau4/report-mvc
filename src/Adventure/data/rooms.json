@@ -2,6 +2,7 @@
     {
         "id": 1,
         "description": "You awaken in a cold stone chamber lit by a flickering torch. The air is damp and silent. Passages lead east and north.",
+        "img": "room1.jpg",
         "exits": {
             "west": null,
             "east": 2,
@@ -13,7 +14,8 @@
     },
     {
         "id": 2,
-        "description": "You enter a storage rooms with dusty shelves. A faint glow catches your eye, an amulet lies abandoned here. Exits are to the west and north.",
+        "description": "You enter a storage room with dusty shelves. You see a faint glow on one of the shelves, an abandoned amulet! Exits are to the west and north.",
+        "img": "room2.png",
         "exits": {
             "west": 1,
             "east": null,
@@ -30,6 +32,7 @@
     {
         "id": 3,
         "description": "You enter a narrow corridor. The walls are covered with eerie portraits. Paths lead east, south, and north.",
+        "img": "room3.jpg",
         "exits": {
             "west": null,
             "east": 4,
@@ -41,7 +44,8 @@
     },
     {
         "id": 4,
-        "description": "You step into a circular chamber. A heavy treasure chest rests in the center, sealed with an old iron lock. Exits are west and south.",
+        "description": "You step into a circular chamber. In the middle of the room is a heavy treasure chest, sealed with an old iron lock. Exits are west and south.",
+        "img": "room4.jpg",
         "exits": {
             "west": 3,
             "east": null,
@@ -53,7 +57,8 @@
     },
     {
         "id": 5,
-        "description": "As you enter the room you see a cursed, hollow armor. Behind it, on a pedestal, rests an iron key. The only way out is to the south.",
+        "description": "As you enter the room you see a cursed, hollow armor. Behind it lies a golden key. The only way out is to the south.",
+        "img": "room5.png",
         "exits": {
             "west": null,
             "east": null,

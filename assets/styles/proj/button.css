@@ -1,0 +1,60 @@
+.adventure-button {
+    background-color: var(--yellow);
+    color: var(--dark);
+    padding: 4px 12px;
+    border: outset var(--dark);
+    font-size: 18px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.adventure-button:active {
+    transform: scale(0.95);
+}
+
+.adventure-start-button {
+    display: flex;
+    justify-content: center;
+}
+
+.adventure-button-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    /* box-shadow: inset 0 0 12px var(--dark); */
+}
+
+.adventure-button-container .dir-button-container {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.dir-button-container .middle-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.adventure-button-container .pick-buttons {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.adventure-button-container .action-button {
+    grid-column: 3;
+    display: flex;
+    justify-content: center;
+}
+
+.adventure-button-container .play-again-button {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+}

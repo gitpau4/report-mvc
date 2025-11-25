@@ -12,13 +12,15 @@ class Room
     private int $roomId;
     private string $description;
     private array $exits;
+    private string $img;
     private array $items;
     private ?string $action;     // rustning och kista tex
 
-    public function __construct(int $roomId, string $description, array $exits = [], array $items = [], ?string $action = null)
+    public function __construct(int $roomId, string $description, string $img, array $exits = [], array $items = [], ?string $action = null)
     {
         $this->roomId = $roomId;
         $this->description = $description;
+        $this->img = $img;
         $this->exits = $exits;
         $this->items = $items;
         $this->action = $action;
@@ -32,6 +34,11 @@ class Room
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    public function getImg(): string
+    {
+        return $this->img;
     }
 
     public function getExits(): array

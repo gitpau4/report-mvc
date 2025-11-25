@@ -5,11 +5,11 @@
 {% block body %}
 <h1>Adventure game</h1>
 
-<p>spela spel.</p>
+<p>Find the treasure. Begin your quest below.</p>
 
-{# <blockquote class="pix-embed-wrap"><div class="pix-embed-activity" data-id="sr22018d9dd41aws3" data-width="150" data-height="150" data-type="art" data-theme="light" data-show-edit="1">Pixilart Embed</div></blockquote><script async="async" src="https://www.pixilart.com/js/embed.js?v=1.0.4"></script> #}
-
-<form method="post" action="{{ path('adventure_post') }}">
+<form method="post" action="{{ path('adventure_post') }}" class="adventure-start-button">
     <input type="submit" name="start" value="Start Adventure" class="adventure-button">
 </form>
+
+<img src="{{ asset('img/pixelcastle.png') }}" alt="" class="adventure-img">
 {% endblock %}

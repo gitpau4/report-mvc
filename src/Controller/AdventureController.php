@@ -68,7 +68,7 @@ class AdventureController extends AbstractController
 
         // kanske göra egen styling för adventure flash, då byt ut notice till typ adventure, kanske två olika färger, gul och blå eller röd och grön
         $this->addFlash(
-            'notice',
+            'adventure',
             $moveMsg
         );
 
@@ -88,12 +88,12 @@ class AdventureController extends AbstractController
         }
 
         $itemName = $request->request->get('pick');
-        $itemName = str_replace("Pick ", "", $itemName);
+        $itemName = str_replace("Pick up ", "", $itemName);
 
         $pickMsg = $adventure->pickItem($itemName);
 
         $this->addFlash(
-            'notice',
+            'adventure',
             $pickMsg
         );
 
@@ -118,7 +118,7 @@ class AdventureController extends AbstractController
         $actionMsg = $adventure->interact($action);
 
         $this->addFlash(
-            'notice',
+            'adventure',
             $actionMsg
         );
 

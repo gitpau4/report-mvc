@@ -40,10 +40,11 @@ class AdventureLogic
 
             $roomId = $roomData["id"];
             $description = $roomData["description"];
+            $img = $roomData["img"];
             $exits = $roomData["exits"];
             $action = $roomData["action"];
 
-            $this->rooms[$roomId] = new Room($roomId, $description, $exits, $items, $action);
+            $this->rooms[$roomId] = new Room($roomId, $description, $img, $exits, $items, $action);
         }
     }
 

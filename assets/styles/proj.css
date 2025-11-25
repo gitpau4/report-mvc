@@ -1,5 +1,12 @@
 @import "./proj/init.css";
 @import "./proj/header.css";
 @import "./proj/main.css";
+@import "./proj/button.css";
+@import "./proj/flash.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&family=Jersey+10&display=swap');
 
 /* @import url('https://fonts.googleapis.com/css?family=Merriweather|Nunito+Sans|Chicle'); */
+
+/* dessa klasser måste skapas: adventure-button, adventure-button-container */
+/* större storlek på vanlig text */

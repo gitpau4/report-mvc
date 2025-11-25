@@ -4,83 +4,72 @@
 
 {% block body %}
 
-{# bild #}
+{{ include('flash.html.twig') }}
 
-{# rumsbeskrivning #}
-{{ currentRoom.getDescription() }}
-<br>
+<div class="adventure-text-container">
+    {# rumsbeskrivning #}
+    {{ currentRoom.getDescription() }}
+    <br>
+    <br>
 
-{# inventory #}
-{{ inventory }}
+    {# inventory #}
+    {{ inventory }}
+</div>
 
 {# knappar #}
 <div class="adventure-button-container">
 
     {% if not isGameOver %}
-        {# move #}
-        {% for direction in ['west', 'east', 'south', 'north'] %}
-            <form method="post" action="{{ path('adventure_move') }}">
-                <input type="submit" name="move" value="{{ direction }}" class="adventure-button">
-            </form>
-        {% endfor %}
+        <div class="dir-button-container">
+            {# move #}
+            {# {% for direction in ['north', 'west', 'east', 'south'] %}
+                <form method="post" action="{{ path('adventure_move') }}">
+                    <input type="submit" name="move" value="{{ direction }}" class="adventure-button">
+                </form>
+            {% endfor %} #}
 
-        {# pick item #}
+            <form method="post" action="{{ path('adventure_move') }}">
+                <input type="submit" name="move" value="north" class="adventure-button">
+            </form>
+
+            <div class="middle-row">
+                <form method="post" action="{{ path('adventure_move') }}">
+                    <input type="submit" name="move" value="west" class="adventure-button">
+                </form>
+
+                <form method="post" action="{{ path('adventure_move') }}">
+                    <input type="submit" name="move" value="east" class="adventure-button">
+                </form>
+            </div>
+
+            <form method="post" action="{{ path('adventure_move') }}">
+                <input type="submit" name="move" value="south" class="adventure-button">
+            </form>
+        </div>
+
+        {# pick up item #}
         {% for item in currentRoom.getItems() %}
-            <form method="post" action="{{ path('adventure_pick') }}">
-                <input type="submit" name="pick" value="Pick {{ item.getName }}" class="adventure-button">
+            <form method="post" action="{{ path('adventure_pick') }}" class="pick-buttons">
+                <input type="submit" name="pick" value="Pick up {{ item.getName }}" class="adventure-button">
             </form>
         {% endfor %}
 
         {# do action #}
         {% if currentRoom.getAction() is not null %}
-            <form method="post" action="{{ path('adventure_action') }}">
+            <form method="post" action="{{ path('adventure_action') }}" class="action-button">
                 <input type="submit" name="action" value="Interact with {{ currentRoom.getAction }}" class="adventure-button">
             </form>
         {% endif %}
     {% else %}
     {# game over #}
-    <form method="post" action="{{ path('adventure_post') }}">
-        <input type="submit" name="again" value="Play again" class="button">
+    <form method="post" action="{{ path('adventure_post') }}" class="play-again-button">
+        <input type="submit" name="again" value="Play again" class="adventure-button">
     </form>
     {% endif %}
 
-    {# {% if not isGameOver %}
-    <form method="post" action="{{ path('game_draw') }}">
-        <input type="submit" name="draw" value="Dra ett kort" class="button">
-    </form>
-
-    <form method="post" action="{{ path('game_stop') }}">
-        <input type="submit" name="stop" value="Stanna" class="button">
-    </form>
-    {% endif %}
-
-    <form method="post" action="{{ path('game_post') }}">
-        <input type="submit" name="again" value="Starta igen" class="button">
-    </form> #}
 </div>
 
-{{ include('flash.html.twig') }}
-
-{# <h2>Spelare poäng: {{ playerPoints }}</h2>
-
-<h3>Spelare kort:</h3>
-<div class="card-container">
-{% for card in playerHand %}
-    <div class="single-card {{ card.getSuit() }}">
-        {{ card.getAsString() }}
-    </div>
-{% endfor %}
-</div>
-
-<h2>Bankens poäng: {{ bankPoints }}</h2>
-
-<h3>Bankens kort:</h3>
-<div class="card-container">
-{% for card in bankHand %}
-    <div class="single-card {{ card.getSuit() }}">
-        {{ card.getAsString() }}
-    </div>
-{% endfor %}
-</div> #}
+{# bild #}
+<img src="{{ asset('img/' ~ currentRoom.getImg()) }}" alt="">
 
 {% endblock %}
