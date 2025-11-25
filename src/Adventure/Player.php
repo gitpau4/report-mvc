@@ -16,12 +16,18 @@ class Player
         return $this->inventory;
     }
 
+    /**
+     * Add item to inventory.
+     */
     public function addItem(Item $item): void
     {
         $this->inventory[] = $item;
     }
 
-    public function removeItem(string $itemName): void
+    /**
+     * Remove item from inventory.
+     */
+    public function removeItem(?string $itemName): void
     {
         foreach ($this->inventory as $key => $item) {
             if ($item->getName() === $itemName) {
@@ -31,6 +37,9 @@ class Player
         }
     }
 
+    /**
+     * Check if item exists in inventory.
+     */
     public function hasItem(string $itemName): bool
     {
         foreach ($this->inventory as $item) {

@@ -18,18 +18,21 @@ class AdventureLogic
     private Room $currentRoom;
     private bool $isGameOver;
 
-    public function __construct()
+    public function __construct(string $jsonPath)
     {
-        $this->initRooms();
+        $this->initRooms($jsonPath);
         $this->player = new Player();
         $this->currentRoom = $this->rooms[1];
         $this->isGameOver = false;
     }
 
-    public function initRooms(): void
+    /**
+     * Create rooms from json data file.
+     */
+    public function initRooms(string $jsonPath): void
     {
-        $path = __DIR__ . '/data/rooms.json';
-        $jsonString = file_get_contents($path);
+        // $path = __DIR__ . '/data/rooms.json';
+        $jsonString = file_get_contents($jsonPath);
         $roomsData = json_decode($jsonString, true);
 
         foreach ($roomsData as $roomData) {
@@ -79,6 +82,9 @@ class AdventureLogic
         return "You are carrying: " . implode(", ", $itemNames);
     }
 
+    /**
+     * Move in given direction to a new room, if possible.
+     */
     public function move(string $direction): string
     {
         $exits = $this->currentRoom->getExits();
@@ -93,6 +99,9 @@ class AdventureLogic
         return "You can't go that way.";
     }
 
+    /**
+     * Pick up item and add to player inventory.
+     */
     public function pickItem(string $itemName): string
     {
         $items = $this->currentRoom->getItems();
@@ -114,39 +123,28 @@ class AdventureLogic
         return "Nothing to pick.";
     }
 
-    public function interact(string $action): string
+    /**
+     * Interact with object in room.
+     */
+    public function interact(): string
     {
         $action = $this->currentRoom->getAction();
         $items = $this->currentRoom->getItems();
 
-        if ($action === "armor") {
-            // om spelare har amulet, då gå armor sönder och canTake key blir true
-            if ($this->player->hasItem("amulet")) {
-                $items["key"]->makeItemTakeable();
-                $this->currentRoom->actionDone();
-
-                return "Your magic amulet starts to glow brighter and the cursed armor falls to the ground. 
-                        The key is now within reach.";
-            }
-
-            $this->isGameOver = true;
-            return "The cursed armors eyeholes light up with an eerie blue glow. 
-                    You don't have any protection, the armor strikes you down. 
-                    Game Over!";
+        // om spelaren inte har vad som krävs för att lyckas med interaktionen
+        if ($action["requires"] && !$this->player->hasItem($action["requires"])) {
+            $this->isGameOver = $action["endOnFail"];
+            return $action["failMessage"];
         }
 
-        if ($action === "treasure") {
-            if ($this->player->hasItem("key")) {
-                $this->player->removeItem("key");
-                $this->currentRoom->actionDone();
-
-                $this->isGameOver = true;
-                return "The key fits perfectly. 
-                        The chest opens with a creak and inside you find piles of gold.
-                        You Win!";
-            }
-
-            return "The treasure chest is locked.";
+        // om man får något av interaktionen
+        if ($action["gives"]) {
+            $items[$action["gives"]]->makeItemTakeable();
         }
+
+        $this->player->removeItem($action["requires"]);
+        $this->currentRoom->actionDone();
+        $this->isGameOver = $action["endOnSuccess"];
+        return $action["successMessage"];
     }
 }

@@ -21,13 +21,6 @@
 
     {% if not isGameOver %}
         <div class="dir-button-container">
-            {# move #}
-            {# {% for direction in ['north', 'west', 'east', 'south'] %}
-                <form method="post" action="{{ path('adventure_move') }}">
-                    <input type="submit" name="move" value="{{ direction }}" class="adventure-button">
-                </form>
-            {% endfor %} #}
-
             <form method="post" action="{{ path('adventure_move') }}">
                 <input type="submit" name="move" value="north" class="adventure-button">
             </form>
@@ -57,7 +50,7 @@
         {# do action #}
         {% if currentRoom.getAction() is not null %}
             <form method="post" action="{{ path('adventure_action') }}" class="action-button">
-                <input type="submit" name="action" value="Interact with {{ currentRoom.getAction }}" class="adventure-button">
+                <input type="submit" name="action" value="Interact with {{ currentRoom.getAction.name }}" class="adventure-button">
             </form>
         {% endif %}
     {% else %}

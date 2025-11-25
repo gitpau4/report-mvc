@@ -14,9 +14,9 @@ class Room
     private array $exits;
     private string $img;
     private array $items;
-    private ?string $action;     // rustning och kista tex
+    private ?array $action;     // rustning och kista tex
 
-    public function __construct(int $roomId, string $description, string $img, array $exits = [], array $items = [], ?string $action = null)
+    public function __construct(int $roomId, string $description, string $img, array $exits = [], array $items = [], ?array $action = null)
     {
         $this->roomId = $roomId;
         $this->description = $description;
@@ -51,21 +51,28 @@ class Room
         return $this->items;
     }
 
-    public function getAction(): ?string
+    public function getAction(): ?array
     {
         return $this->action;
     }
 
+    /**
+     * Remove item from items list.
+     */
     public function removeItem(string $itemName): void
     {
         foreach ($this->items as $key => $item) {
             if ($item->getName() === $itemName) {
                 unset($this->items[$key]);
+                $this->items = array_values($this->items);
                 break;
             }
         }
     }
 
+    /**
+     * Make action null.
+     */
     public function actionDone(): void
     {
         $this->action = null;

@@ -33,7 +33,7 @@ class AdventureController extends AbstractController
     public function adventureCallback(
         SessionInterface $session
     ): Response {
-        $adventure = new AdventureLogic();
+        $adventure = new AdventureLogic(__DIR__ . '/../../data/adventure_rooms.json');
         $session->set('adventure', $adventure);
 
         return $this->redirectToRoute('adventure_play');
@@ -116,10 +116,12 @@ class AdventureController extends AbstractController
             return $this->redirectToRoute('adventure');
         }
 
-        $action = $request->request->get('action');
-        $action = str_replace("Interact with ", "", $action);
+        // $action = $request->request->get('action');
+        // $action = str_replace("Interact with ", "", $action);
 
-        $actionMsg = $adventure->interact($action);
+        // $actionMsg = $adventure->interact($action);
+
+        $actionMsg = $adventure->interact();
 
         $this->addFlash(
             'adventure',

@@ -1,0 +1,61 @@
+[
+    {
+        "id": 1,
+        "description": "room 1",
+        "img": "room1.jpg",
+        "exits": {
+            "west": null,
+            "east": null,
+            "south": null,
+            "north": 2
+        },
+        "items": [
+            {
+                "name": "item",
+                "description": "an item",
+                "canTake": true
+            }
+        ],
+        "action": null
+    },
+    {
+        "id": 2,
+        "description": "room 2",
+        "img": "room2.png",
+        "exits": {
+            "west": null,
+            "east": null,
+            "south": 1,
+            "north": 3
+        },
+        "items": [
+            {
+                "name": "thing",
+                "description": "a thing",
+                "canTake": false
+            }
+        ],
+        "action": {
+            "name": "action",
+            "requires": "item",
+            "gives": "thing",
+            "failMessage": "fail",
+            "successMessage": "success",
+            "endOnFail": false,
+            "endOnSuccess": true
+        }
+    },
+    {
+        "id": 3,
+        "description": "room 3",
+        "img": "room3.png",
+        "exits": {
+            "west": null,
+            "east": null,
+            "south": 2,
+            "north": null
+        },
+        "items": [],
+        "action": null
+    }
+]

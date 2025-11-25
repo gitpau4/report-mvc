@@ -53,7 +53,15 @@
             "north": null
         },
         "items": [],
-        "action": "treasure"
+        "action": {
+            "name": "treasure",
+            "requires": "key",
+            "gives": null,
+            "failMessage": "The treasure chest is locked.",
+            "successMessage": "The key fits perfectly. The chest opens with a creak and inside you find piles of gold. You Win!",
+            "endOnFail": false,
+            "endOnSuccess": true
+        }
     },
     {
         "id": 5,
@@ -70,6 +78,14 @@
             "description": "key to open treasure chest",
             "canTake": false
         }],
-        "action": "armor"
+        "action": {
+            "name": "armor",
+            "requires": "amulet",
+            "gives": "key",
+            "failMessage": "The cursed armors eyeholes light up with an eerie blue glow. You don't have any protection, the armor strikes you down. Game Over!",
+            "successMessage": "Your magic amulet starts to glow brighter and the cursed armor falls to the ground. The key is now within reach.",
+            "endOnFail": true,
+            "endOnSuccess": false
+        }
     }
 ]
