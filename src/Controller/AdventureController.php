@@ -22,7 +22,12 @@ class AdventureController extends AbstractController
     {
         return $this->render('proj/about.html.twig');
     }
-    // kommer behöva lägga till img path i json filen
+
+    #[Route('/proj/cheat', name: 'proj_cheat', methods: ['GET'])]
+    public function projCheat(): Response
+    {
+        return $this->render('proj/cheat.html.twig');
+    }
 
     #[Route('/proj', name: 'adventure_post', methods: ['POST'])]
     public function adventureCallback(
@@ -66,7 +71,6 @@ class AdventureController extends AbstractController
 
         $moveMsg = $adventure->move($direction);
 
-        // kanske göra egen styling för adventure flash, då byt ut notice till typ adventure, kanske två olika färger, gul och blå eller röd och grön
         $this->addFlash(
             'adventure',
             $moveMsg
