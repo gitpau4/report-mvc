@@ -100,7 +100,7 @@ class AdventureLogic
 
             return "You go " . $direction . ".";
         }
-        
+
         return "You can't go that way.";
     }
 
@@ -121,10 +121,10 @@ class AdventureLogic
 
                 return "You pick up the " . $itemName . ".";
             }
-            
+
             return "You can't reach the " . $itemName . ".";
         }
-        
+
         return "Nothing to pick.";
     }
 

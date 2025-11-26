@@ -116,11 +116,6 @@ class AdventureController extends AbstractController
             return $this->redirectToRoute('adventure');
         }
 
-        // $action = $request->request->get('action');
-        // $action = str_replace("Interact with ", "", $action);
-
-        // $actionMsg = $adventure->interact($action);
-
         $actionMsg = $adventure->interact();
 
         $this->addFlash(

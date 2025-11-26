@@ -195,5 +195,50 @@
                 Till exempel att man kan sätta en siffra på hur komplex koden är, eller hur lätt den är att underhålla (Maintainabiliy index).
             </p>
         </section>
+
+        <section id="kmom10">
+            <h2>Kmom10 Projekt</h2>
+            <h3>Krav 1-3</h3>
+                <p>
+                    Jag valde projektet äventyrsspel, då jag tyckte det lät som det roligaste projektet. 
+                    Först tänkte jag ut vilka rum som jag ville ha, och vad man ska göra i spelet. 
+                    Därefter började jag att fundera över vilka klasser som var lämliga att ha med, tillslut bestämde jag mig för Room, Item, Player och AdventureLogic. 
+                    Player-klassen innehåller egentligen bara ett inventory, men jag valde att ha en Player-klass så man enkelt kan lägga till fler egenskaper till en spelare ifall man vill utöka spelet. 
+                    Sedan implementerade jag dessa klasser och skapade metoder jag tänkte jag skulle behöva. 
+                    Sedan skapade jag en controller och twig templates, och justerade koden i klasserna när jag insåg att det behövdes.
+                    Härnäst fixade jag stylingen till spelet, jag ville ha en retro (typ 80-tal ui) medeltida känsla, detta uppnås med typsnitten, färgpaletten och stilen på knapparna. 
+                    Jag skapade även testklasser som testar klassernas metoder, jag uppnådde en kodtäckning på 98.88% för src/Adventure-mappen. 
+                    När jag skapade testklassen för AdventureLogic insåg jag att interact-metoden var väldigt hårdkodad för just de interaktioner som går att göra i spelet just nu. 
+                    Därmed var den lite svårtestad, då jag skapat en egen testdata-jsonfil. 
+                    Därför ändrade jag om den metoden så att den blev mer generell, så man skulle kunna lägga till fler actions utan att behöva ändra om och lägga till i koden. 
+                </p>
+            <h3>Krav 4</h3>
+                <p>
+                    Jag skapade först en landingssida för projektets API, där samlades länkar och knappar för att testa API:t. 
+                    Sedan skapade jag en separat controller för json routsen. 
+                    Jag bestämde mig för att skapa dessa routes: info om alla rum, info om specifikt rum, spelarens inventarium, flytta i riktning, plocka föremål, interagera med objekt. 
+                    De tre sistnämnda är post-routes. 
+                </p>
+            <h3>Genomförande</h3>
+                <p>
+                    Projektet var väldigt kul och lärorikt att göra. 
+                    Vissa delar var svåra, vissa var lätta. 
+                    Efter projektet tycker jag att jag fått en bättre förståelse för objektorientering, klasser och struktur. 
+                    Det svåraste var nog att göra interact-metoden generell, att göra en metod som funkar för olika typer av interaktioner i spelet. 
+                    Även att initiera rummen i AdventureLogic klassen var lite klurigt. 
+                    De andra klasserna var relativt enkla att implementera. 
+                    Styligen tar alltid lite längre tid än tänkt, men denna gång tycker jag att det gick ganska smidigt att få till en styling jag var nöjd med. 
+                    Det tog dock lite tid att lägga move-knapparna i de positioner jag ville. 
+                    Generellt var det ett bra projekt för kursen!
+                </p>
+            <h3>Tankar om kursen</h3>
+                <p>
+                    Jag är nöjd med kursen. 
+                    Vissa kursmoment var kluriga och tog lång tid, men då är de också lärorika. 
+                    Jag tycker att kursmaterialet är bra och tydligt. 
+                    Jag har lärt mig en hel del och vissa uppgifter var extra roliga att lösa, till exempel kortspel och slutprojektet. 
+                    Kursen får 8/10.
+                </p>
+        </section>
     </article>
 {% endblock %}
