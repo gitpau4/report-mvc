@@ -51,21 +51,26 @@ class AdventureLogicTest extends TestCase
     public function testInteract(): void
     {
         $logic = new AdventureLogic(__DIR__ . '/../../data/adventure_test_rooms.json');
-        $logic->move("north");
 
-        // har inte item
+        // inget att interagera med
         $actionRes1 = $logic->interact();
 
-        $this->assertEquals("fail", $actionRes1);
+        $this->assertEquals("Nothing to interact with.", $actionRes1);
+
+        // har inte item
+        $logic->move("north");
+        $actionRes2 = $logic->interact();
+
+        $this->assertEquals("fail", $actionRes2);
 
         // har item
         $logic->move("south");
         $logic->pickItem("item");
         $logic->move("north");
 
-        $actionRes2 = $logic->interact();
+        $actionRes3 = $logic->interact();
 
-        $this->assertEquals("success", $actionRes2);
+        $this->assertEquals("success", $actionRes3);
     }
 
     public function testIsGameOver(): void
@@ -73,5 +78,22 @@ class AdventureLogicTest extends TestCase
         $logic = new AdventureLogic(__DIR__ . '/../../data/adventure_test_rooms.json');
 
         $this->assertFalse($logic->getIsGameOver());
+    }
+
+    public function testGetInventoryAsString(): void
+    {
+        $logic = new AdventureLogic(__DIR__ . '/../../data/adventure_test_rooms.json');
+
+        // empty
+        $res = $logic->getInventoryAsString();
+
+        $this->assertEquals("Your inventory is empty.", $res);
+
+        // one item
+        $item = new Item("item", "an item", true);
+        $logic->getPlayer()->addItem($item);
+        $res = $logic->getInventoryAsString();
+
+        $this->assertEquals("You are carrying: item", $res);
     }
 }

@@ -56,6 +56,11 @@ class AdventureLogic
         return $this->rooms;
     }
 
+    public function getPlayer(): Player
+    {
+        return $this->player;
+    }
+
     public function getCurrentRoom(): Room
     {
         return $this->currentRoom;
@@ -107,7 +112,7 @@ class AdventureLogic
         $items = $this->currentRoom->getItems();
 
         // om rummet har item, lägg i spelares inventory
-        if (!empty($items)) {
+        if (!empty($items) && isset($items[$itemName])) {
             if ($items[$itemName]->canTakeItem()) {
                 $this->player->addItem($items[$itemName]);
 
@@ -130,6 +135,10 @@ class AdventureLogic
     {
         $action = $this->currentRoom->getAction();
         $items = $this->currentRoom->getItems();
+
+        if ($action === null) {
+            return "Nothing to interact with.";
+        }
 
         // om spelaren inte har vad som krävs för att lyckas med interaktionen
         if ($action["requires"] && !$this->player->hasItem($action["requires"])) {
