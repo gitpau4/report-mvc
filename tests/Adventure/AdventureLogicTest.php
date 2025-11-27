@@ -37,7 +37,6 @@ class AdventureLogicTest extends TestCase
         $this->assertEquals("You pick up the item.", $pickRes1);
 
         $logic->move("north");
-
         $pickRes2 = $logic->pickItem("thing");
 
         $this->assertEquals("You can't reach the thing.", $pickRes2);

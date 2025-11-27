@@ -31,7 +31,6 @@ class AdventureLogic
      */
     public function initRooms(string $jsonPath): void
     {
-        // $path = __DIR__ . '/data/rooms.json';
         $jsonString = file_get_contents($jsonPath);
         $roomsData = json_decode($jsonString, true);
 

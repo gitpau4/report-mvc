@@ -108,8 +108,7 @@ class AdventureController extends AbstractController
 
     #[Route('/proj/action', name: 'adventure_action', methods: ['POST'])]
     public function adventureAction(
-        SessionInterface $session,
-        Request $request
+        SessionInterface $session
     ): Response {
         $adventure = $session->get('adventure');
         if (!$adventure) {
